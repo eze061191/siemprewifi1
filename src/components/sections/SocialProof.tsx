@@ -7,7 +7,7 @@ export const SocialProof = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <img 
-              src="https://images.unsplash.com/photo-1522881193457-31ae824a86a5?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
               alt="Amigos conectados a un WIFI para todos sus viajes" 
               className="rounded-lg shadow-2xl object-cover w-full h-[400px]"
             />

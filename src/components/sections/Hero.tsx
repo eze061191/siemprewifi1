@@ -55,7 +55,7 @@ export const Hero = () => {
           </div>
           <div className="hidden lg:block">
             <img 
-              src="https://images.unsplash.com/photo-1520222984843-df8716d3ba5e?q=80&w=2070&auto=format&fit=crop" 
+              src="https://images.pexels.com/photos/4386321/pexels-photo-4386321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
               alt="Conectividad global al alcance de tu mano" 
               className="rounded-lg shadow-2xl object-cover w-full h-[400px]"
             />
