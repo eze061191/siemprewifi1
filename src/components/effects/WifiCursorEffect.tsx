@@ -38,9 +38,9 @@ function sketch(p5: P5CanvasInstance) {
       p5.stroke(this.color);
       
       for (let i = 1; i <= 3; i++) {
-        let radius = this.currentRadius * (i / 3);
-        if (radius > 0) {
-            p5.arc(this.x, this.y, radius, radius, -p5.QUARTER_PI, p5.QUARTER_PI);
+        let diameter = this.currentRadius * (i / 3);
+        if (diameter > 0) {
+            p5.ellipse(this.x, this.y, diameter, diameter);
         }
       }
     }
