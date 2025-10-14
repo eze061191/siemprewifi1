@@ -5,19 +5,25 @@ import { Features } from "@/components/sections/Features";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
+import { SocialProof } from "@/components/sections/SocialProof";
+import { WifiCursorEffect } from "@/components/effects/WifiCursorEffect";
 
 const Index = () => {
   return (
-    <div className="bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <HowItWorks />
-        <Testimonials />
-        <Faq />
-      </main>
-      <Footer />
+    <div className="bg-white relative">
+      <WifiCursorEffect />
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <Features />
+          <HowItWorks />
+          <SocialProof />
+          <Testimonials />
+          <Faq />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
