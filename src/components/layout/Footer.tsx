@@ -1,86 +1,68 @@
-import { Wifi, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-50 border-t">
+    <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="lg:col-span-2">
             <div className="flex items-center">
-              <Wifi className="h-8 w-8 text-orange-500" />
-              <span className="ml-2 text-2xl font-bold">
-                Siempre
-                <span className="text-orange-500">WIFI</span>
+              <span className="text-2xl font-bold text-white">
+                Siempre<span className="text-orange-500">WIFI</span>
               </span>
             </div>
-            <p className="text-gray-500 text-sm">
-              Internet para viajeros. Conéctate en más de 160 países sin
-              preocuparte por el roaming.
+            <p className="mt-4 text-sm text-gray-400">
+              Conectando viajeros en más de 160 países con la mejor tecnología eSIM. Internet confiable, rápido y seguro.
             </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">
-              Navegación
-            </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <a href="#" className="text-base text-gray-500 hover:text-gray-900">
-                  Cómo funciona
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base text-gray-500 hover:text-gray-900">
-                  Preguntas frecuentes
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base text-gray-500 hover:text-gray-900">
-                  Contacto
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">
-              Legal
-            </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <a href="#" className="text-base text-gray-500 hover:text-gray-900">
-                  Política de Privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base text-gray-500 hover:text-gray-900">
-                  Términos de Servicio
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase">
-              Redes Sociales
-            </h3>
-            <div className="flex mt-4 space-x-6">
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Facebook</span>
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Instagram</span>
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <span className="sr-only">Twitter</span>
-                <Twitter className="h-6 w-6" />
-              </a>
+            <div className="flex mt-6 space-x-4">
+              <a href="#" className="text-gray-400 hover:text-white"><Facebook /></a>
+              <a href="#" className="text-gray-400 hover:text-white"><Twitter /></a>
+              <a href="#" className="text-gray-400 hover:text-white"><Instagram /></a>
+              <a href="#" className="text-gray-400 hover:text-white"><Linkedin /></a>
             </div>
           </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">
+              Sobre Siempre WIFI
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Inicio</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Sobre Nosotros</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Blog</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Términos y Condiciones</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Política de Privacidad</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">
+              Enlaces rápidos
+            </h3>
+            <ul className="mt-4 space-y-2">
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Ver Planes</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Cómo Funciona</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Cobertura</a></li>
+              <li><a href="#" className="text-base text-gray-400 hover:text-white">Compatibilidad</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">
+              Contacto
+            </h3>
+            <ul className="mt-4 space-y-3">
+              <li className="flex items-start">
+                <Mail className="h-5 w-5 mt-1 mr-3 flex-shrink-0" />
+                <span>soportes@siemprewifi.com</span>
+              </li>
+              <li className="flex items-start">
+                <Phone className="h-5 w-5 mt-1 mr-3 flex-shrink-0" />
+                <span>+1 (234) 567-890</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-8 border-t border-gray-200 pt-8 text-center">
+        <div className="mt-8 border-t border-gray-700 pt-8 text-center">
           <p className="text-base text-gray-400">
-            &copy; {new Date().getFullYear()} Siempre WIFI. Todos los derechos
-            reservados.
+            &copy; {new Date().getFullYear()} Siempre WIFI. Todos los derechos reservados.
           </p>
         </div>
       </div>

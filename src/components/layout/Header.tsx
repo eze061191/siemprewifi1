@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Wifi } from "lucide-react";
 
 export const Header = () => {
   return (
@@ -7,40 +6,29 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Wifi className="h-8 w-8 text-orange-500" />
-            <span className="ml-2 text-2xl font-bold">
-              Siempre
-              <span className="text-orange-500">WIFI</span>
+            <span className="text-2xl font-bold">
+              Siempre<span className="text-orange-500">WIFI</span>
             </span>
           </div>
           <nav className="hidden md:flex md:space-x-8">
-            <a
-              href="#"
-              className="font-medium text-gray-500 hover:text-gray-900"
-            >
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
               Inicio
             </a>
-            <a
-              href="#"
-              className="font-medium text-gray-500 hover:text-gray-900"
-            >
-              Cómo funciona
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Sobre Nosotros
             </a>
-            <a
-              href="#"
-              className="font-medium text-gray-500 hover:text-gray-900"
-            >
-              Preguntas frecuentes
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Blog
             </a>
-            <a
-              href="#"
-              className="font-medium text-gray-500 hover:text-gray-900"
-            >
-              Contacto
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Mi cuenta
+            </a>
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Contáctenos
             </a>
           </nav>
           <div className="flex items-center">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-full px-6">
               Ver Planes
             </Button>
           </div>

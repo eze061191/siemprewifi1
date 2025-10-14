@@ -1,24 +1,19 @@
-import { Globe, Wifi, Smartphone, ShieldCheck } from "lucide-react";
+import { Wifi, Zap, ShieldCheck } from "lucide-react";
 
 const features = [
   {
-    name: "Conexión Global",
-    description: "Cobertura en más de 160 países para que nunca te desconectes.",
-    icon: Globe,
-  },
-  {
-    name: "eSIM y SIM Física",
-    description: "Elige la opción que mejor se adapte a tu dispositivo y necesidades.",
-    icon: Smartphone,
-  },
-  {
-    name: "Fácil de Instalar",
-    description: "Activa tu plan en minutos con un simple código QR o insertando la SIM.",
+    name: "Internet sin complicaciones",
+    description: "Activa tu eSIM antes de viajar y conéctate automáticamente al aterrizar. Sin buscar WiFi, sin planes locales.",
     icon: Wifi,
   },
   {
-    name: "Soporte 24/7",
-    description: "Nuestro equipo está disponible para ayudarte en cualquier momento.",
+    name: "Velocidad garantizada",
+    description: "4G LTE en más de 160 países con la misma velocidad que en casa. Navega, trabaja y comparte sin límites.",
+    icon: Zap,
+  },
+  {
+    name: "Conectividad Segura",
+    description: "Red privada encriptada. Viaja seguro sabiendo que tus datos están protegidos en cualquier red.",
     icon: ShieldCheck,
   },
 ];
@@ -29,35 +24,23 @@ export const Features = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">
-            Todo lo que necesitas para tu viaje
+            ¿Por qué elegir Siempre WIFI?
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-            Disfruta de una conexión a internet rápida y segura donde quiera que
-            vayas.
+            La solución más simple y confiable para mantenerte conectado en cualquier parte del mundo
           </p>
         </div>
         <div className="mt-12">
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <div key={feature.name} className="pt-6">
-                <div className="flow-root bg-white rounded-lg px-6 pb-8 shadow-md">
-                  <div className="-mt-6">
-                    <div>
-                      <span className="inline-flex items-center justify-center p-3 bg-orange-500 rounded-md shadow-lg">
-                        <feature.icon
-                          className="h-6 w-6 text-white"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </div>
-                    <h3 className="mt-8 text-lg font-medium text-gray-900 tracking-tight">
-                      {feature.name}
-                    </h3>
-                    <p className="mt-5 text-base text-gray-500">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
+              <div key={feature.name} className="bg-white p-8 rounded-lg border border-gray-200 text-center shadow-sm">
+                <feature.icon className="h-10 w-10 text-orange-500 mx-auto" aria-hidden="true" />
+                <h3 className="mt-6 text-lg font-medium text-gray-900">
+                  {feature.name}
+                </h3>
+                <p className="mt-2 text-base text-gray-500">
+                  {feature.description}
+                </p>
               </div>
             ))}
           </div>
