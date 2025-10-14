@@ -29,10 +29,10 @@ export const Hero = () => {
               </p>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white py-6 px-8 text-lg rounded-full">
+              <Button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white py-3 px-8 text-lg rounded-md">
                 Ver Planes y Precios
               </Button>
-              <Button variant="outline" className="w-full sm:w-auto py-6 px-8 text-lg rounded-full border-gray-300">
+              <Button variant="outline" className="w-full sm:w-auto py-3 px-8 text-lg rounded-md border-gray-300">
                 Cómo Funciona
               </Button>
             </div>
@@ -51,10 +51,10 @@ export const Hero = () => {
                 </div>
             </div>
           </div>
-          <div className="hidden lg:block">
+          <div>
             <img
-              src="https://images.pexels.com/photos/1051075/pexels-photo-1051075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              alt="Mujer viajera usando su teléfono"
+              src="https://i.imgur.com/5aXyP4a.png"
+              alt="Conectividad global al alcance de tu mano"
               className="rounded-lg shadow-2xl object-cover w-full h-full"
             />
           </div>

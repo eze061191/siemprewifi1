@@ -35,21 +35,27 @@ export const HowItWorks = () => {
             En solo 4 simples pasos estarás conectado en cualquier parte del mundo
           </p>
         </div>
-        <div className="mt-12 grid gap-10 lg:grid-cols-4 lg:gap-8">
-          {steps.map((step, index) => (
-            <div key={step.name} className="flex flex-col items-center text-center">
-              <div className="flex items-center justify-center h-20 w-20 rounded-full bg-orange-100 text-orange-500 relative mb-4">
-                <step.icon className="h-10 w-10" />
-                <span className="absolute -top-2 -right-2 flex items-center justify-center h-8 w-8 rounded-full bg-orange-500 text-white text-sm font-bold">
-                  {index + 1}
-                </span>
+        <div className="mt-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-0 relative">
+            {steps.map((step, index) => (
+              <div key={step.name} className="flex flex-col items-center text-center relative">
+                {index < steps.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 left-1/2 w-full h-0.5 bg-gray-200" style={{ transform: 'translateY(-50%)' }}></div>
+                )}
+                <div className="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-gray-200 text-orange-500 relative z-10">
+                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100">
+                    <step.icon className="h-8 w-8" />
+                  </div>
+                  <span className="absolute -top-2 -right-2 flex items-center justify-center h-8 w-8 rounded-full bg-orange-500 text-white text-sm font-bold">
+                    {index + 1}
+                  </span>
+                </div>
+                <div className="mt-4">
+                  <h3 className="text-lg font-medium text-gray-900">{step.name}</h3>
+                </div>
               </div>
-              <div className="mt-2">
-                <h3 className="text-lg font-medium text-gray-900">{step.name}</h3>
-                <p className="mt-2 text-base text-gray-500">{step.description}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

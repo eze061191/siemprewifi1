@@ -33,8 +33,10 @@ export const Features = () => {
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
-              <div key={feature.name} className="bg-white p-8 rounded-lg border border-gray-200 text-center shadow-sm">
-                <feature.icon className="h-10 w-10 text-orange-500 mx-auto" aria-hidden="true" />
+              <div key={feature.name} className="bg-white p-8 rounded-lg border border-gray-200 text-center">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 mx-auto">
+                  <feature.icon className="h-6 w-6 text-orange-500" aria-hidden="true" />
+                </div>
                 <h3 className="mt-6 text-lg font-medium text-gray-900">
                   {feature.name}
                 </h3>
