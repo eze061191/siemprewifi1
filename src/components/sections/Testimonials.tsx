@@ -6,16 +6,19 @@ const testimonials = [
     name: "Elisa G.",
     role: "Viajera Frecuente",
     quote: "¡Increíble servicio! Aterricé en Japón y ya tenía internet. Me salvó de estar perdida. Totalmente recomendado.",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     name: "Marcos R.",
     role: "Nómada Digital",
     quote: "Como nómada digital, necesito estar siempre conectado. Siempre WIFI nunca me ha fallado en mis viajes por Europa.",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     name: "Lucía F.",
     role: "Vacaciones en Familia",
     quote: "La mejor decisión para nuestras vacaciones. Todos conectados sin preocuparnos por las facturas de roaming.",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg"
   },
 ];
 
@@ -33,21 +36,26 @@ export const Testimonials = () => {
         </div>
         <div className="mt-12 grid gap-8 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="shadow-lg">
-              <CardContent className="pt-6">
-                <div className="flex space-x-1 text-orange-500">
-                  <Star fill="currentColor" className="h-5 w-5" />
-                  <Star fill="currentColor" className="h-5 w-5" />
-                  <Star fill="currentColor" className="h-5 w-5" />
-                  <Star fill="currentColor" className="h-5 w-5" />
-                  <Star fill="currentColor" className="h-5 w-5" />
+            <Card key={testimonial.name} className="shadow-lg bg-white transform hover:-translate-y-2 transition-transform duration-300">
+              <CardContent className="pt-6 flex flex-col h-full">
+                <div className="flex-grow">
+                  <div className="flex space-x-1 text-orange-500">
+                    <Star fill="currentColor" className="h-5 w-5" />
+                    <Star fill="currentColor" className="h-5 w-5" />
+                    <Star fill="currentColor" className="h-5 w-5" />
+                    <Star fill="currentColor" className="h-5 w-5" />
+                    <Star fill="currentColor" className="h-5 w-5" />
+                  </div>
+                  <blockquote className="mt-4 text-lg text-gray-900">
+                    <p>“{testimonial.quote}”</p>
+                  </blockquote>
                 </div>
-                <blockquote className="mt-4 text-lg text-gray-900">
-                  <p>“{testimonial.quote}”</p>
-                </blockquote>
-                <figcaption className="mt-4 flex items-center space-x-3">
-                  <div className="font-medium text-gray-900">{testimonial.name}</div>
-                  <div className="text-gray-500">/ {testimonial.role}</div>
+                <figcaption className="mt-6 flex items-center space-x-4">
+                  <img className="h-12 w-12 rounded-full" src={testimonial.avatar} alt={testimonial.name} />
+                  <div>
+                    <div className="font-medium text-gray-900">{testimonial.name}</div>
+                    <div className="text-gray-500 text-sm">{testimonial.role}</div>
+                  </div>
                 </figcaption>
               </CardContent>
             </Card>

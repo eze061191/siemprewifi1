@@ -20,7 +20,7 @@ export const SocialProof = () => {
               Conecta hasta 5 dispositivos a la vez con nuestro pocket WiFi o comparte datos desde tu móvil con la eSIM. Ideal para viajar en grupo, con familia o si llevas varios dispositivos.
             </p>
             <div className="mt-8">
-              <Button className="bg-orange-500 hover:bg-orange-600 text-white py-4 px-8 text-lg">
+              <Button className="bg-orange-500 hover:bg-orange-600 text-white py-4 px-8 text-lg rounded-full">
                 Ver Dispositivos
               </Button>
             </div>
