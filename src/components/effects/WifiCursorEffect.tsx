@@ -50,8 +50,17 @@ function sketch(p5: P5CanvasInstance) {
     }
   }
 
+  const addSignal = (x: number, y: number) => {
+    if (y < p5.height && x < p5.width && y > 0 && x > 0) {
+        signals.push(new WifiSignal(x, y));
+    }
+  };
+
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    window.addEventListener('mousedown', (e) => {
+      addSignal(e.clientX, e.clientY);
+    });
   };
 
   p5.draw = () => {
@@ -65,12 +74,6 @@ function sketch(p5: P5CanvasInstance) {
     }
   };
 
-  p5.mousePressed = () => {
-    if (p5.mouseY < p5.height && p5.mouseX < p5.width && p5.mouseY > 0 && p5.mouseX > 0) {
-        signals.push(new WifiSignal(p5.mouseX, p5.mouseY));
-    }
-  };
-
   p5.windowResized = () => {
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
   };
@@ -78,7 +81,7 @@ function sketch(p5: P5CanvasInstance) {
 
 export const WifiCursorEffect = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none">
+    <div className="fixed top-0 left-0 w-full h-full z-50 pointer-events-none">
       <ReactP5Wrapper sketch={sketch} />
     </div>
   );
