@@ -55,7 +55,7 @@ export const Hero = () => {
           </div>
           <div>
             <img
-              src="https://i.imgur.com/5aXyP4a.png"
+              src="/Post - Conectividad global al alcance de tu mano.png"
               alt="Conectividad global al alcance de tu mano"
               className="rounded-lg shadow-2xl object-cover w-full h-full"
             />

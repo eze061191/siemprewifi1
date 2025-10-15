@@ -26,7 +26,7 @@ export const SocialProof = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <img 
-              src="https://i.imgur.com/Y8GkqnB.png" 
+              src="/Post - 5 amigos conectados a un WIFI.png" 
               alt="Amigos conectados a un WIFI para todos sus viajes" 
               className="rounded-lg shadow-2xl object-cover w-full"
             />
