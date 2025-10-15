@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Star, Check } from "lucide-react";
 import { HeroParticleEffect } from "@/components/effects/HeroParticleEffect";
-import { PriceCalculator } from "./PriceCalculator";
 
 export const Hero = () => {
   return (
@@ -55,7 +54,11 @@ export const Hero = () => {
             </div>
           </div>
           <div>
-            <PriceCalculator />
+            <img 
+              src="/Post - Conectividad global al alcance de tu mano.png" 
+              alt="Conectividad global al alcance de tu mano" 
+              className="rounded-lg shadow-2xl object-cover w-full"
+            />
           </div>
         </div>
       </div>
