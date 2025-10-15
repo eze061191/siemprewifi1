@@ -11,12 +11,12 @@ export const Cta = () => {
         <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-300">
           Únete a miles de viajeros que ya confían en SiempreWIFI
         </p>
-        <div className="mt-8 inline-flex items-center bg-orange-500/20 text-orange-300 border border-orange-500 rounded-full p-1 pr-4">
-          <Tag className="h-5 w-5 bg-orange-500 text-white rounded-full p-1 mr-2" />
+        <div className="mt-8 inline-flex items-center bg-primary/20 text-orange-300 border border-primary rounded-full p-1 pr-4">
+          <Tag className="h-5 w-5 bg-primary text-primary-foreground rounded-full p-1 mr-2" />
           <span className="font-bold">Oferta especial: 20% OFF en tu primera compra con código PRIMERAVEZ</span>
         </div>
         <p className="mt-4 text-sm text-gray-400">Válido solo por 48 horas</p>
-        <Button className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-10 py-6 text-lg rounded-md">
+        <Button className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-lg rounded-md">
           Activar mi eSIM ahora
         </Button>
         <p className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-400">

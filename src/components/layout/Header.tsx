@@ -28,7 +28,7 @@ export const Header = () => {
             </a>
           </nav>
           <div className="flex items-center">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-md px-6">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">
               Ver Planes
             </Button>
           </div>

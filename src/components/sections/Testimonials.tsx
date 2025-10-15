@@ -48,13 +48,13 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="bg-orange-500 py-20">
+    <section className="bg-primary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-white font-serif">
             Más de 15,000 viajeros ya confían en nosotros
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-xl text-orange-100">
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-primary-foreground/90">
             Lee las experiencias reales de nuestros clientes satisfechos
           </p>
         </div>
@@ -63,7 +63,7 @@ export const Testimonials = () => {
             <Card key={testimonial.name} className="bg-white">
               <CardContent className="pt-6 flex flex-col h-full">
                 <div className="flex-grow">
-                  <div className="flex space-x-1 text-orange-500">
+                  <div className="flex space-x-1 text-primary">
                     {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="h-5 w-5" />)}
                   </div>
                   <blockquote className="mt-4 text-base text-gray-700">

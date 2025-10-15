@@ -22,7 +22,7 @@ export const TrustBadges = () => {
         <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
           {items.map((item) => (
             <div key={item.name} className="flex items-center gap-3">
-              <item.icon className="h-6 w-6 text-orange-500" />
+              <item.icon className="h-6 w-6 text-primary" />
               <span className="text-gray-700 font-medium">{item.name}</span>
             </div>
           ))}

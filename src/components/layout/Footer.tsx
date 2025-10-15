@@ -52,14 +52,14 @@ export const Footer = () => {
             <div className="bg-gray-900 p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
                 <h3 className="text-sm font-semibold text-white tracking-wider uppercase col-span-1 md:col-span-2 font-serif">Contacto</h3>
                 <div className="flex items-start">
-                    <Mail className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-orange-500" />
+                    <Mail className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-primary" />
                     <div>
                         <p className="font-semibold">Email</p>
                         <p className="text-gray-400">soportes@siemprewifi.com</p>
                     </div>
                 </div>
                 <div className="flex items-start">
-                    <Phone className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-orange-500" />
+                    <Phone className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-primary" />
                     <div>
                         <p className="font-semibold">Teléfono</p>
                         <p className="text-gray-400">+1 (234) 567-890</p>

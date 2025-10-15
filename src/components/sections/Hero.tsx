@@ -12,7 +12,7 @@ export const Hero = () => {
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight font-serif">
               Viaja conectado a más de{" "}
-              <span className="text-orange-500">160 países</span> sin cambiar de
+              <span className="text-primary">160 países</span> sin cambiar de
               SIM
             </h1>
             <p className="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl text-gray-500">
@@ -20,7 +20,7 @@ export const Hero = () => {
               sorpresas, sin roaming.
             </p>
             <div className="mt-6 flex items-center justify-center lg:justify-start gap-2">
-              <div className="flex text-orange-500">
+              <div className="flex text-primary">
                 <Star fill="currentColor" className="h-5 w-5" />
                 <Star fill="currentColor" className="h-5 w-5" />
                 <Star fill="currentColor" className="h-5 w-5" />
@@ -32,7 +32,7 @@ export const Hero = () => {
               </p>
             </div>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white py-3 px-8 text-lg rounded-md">
+              <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground py-3 px-8 text-lg rounded-md">
                 Ver Planes y Precios
               </Button>
               <Button variant="outline" className="w-full sm:w-auto py-3 px-8 text-lg rounded-md border-gray-300">

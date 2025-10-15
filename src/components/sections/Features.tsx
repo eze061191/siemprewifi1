@@ -20,7 +20,7 @@ const features = [
 
 export const Features = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-secondary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
@@ -34,8 +34,8 @@ export const Features = () => {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="bg-white p-8 rounded-lg border border-gray-200 text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-orange-100 mx-auto">
-                  <feature.icon className="h-6 w-6 text-orange-500" aria-hidden="true" />
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mx-auto">
+                  <feature.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
                 <h3 className="mt-6 text-lg font-medium text-gray-900 font-serif">
                   {feature.name}

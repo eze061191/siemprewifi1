@@ -22,8 +22,8 @@ export const Coverage = () => {
             Mantente conectado en los destinos más populares del mundo
           </p>
         </div>
-        <div className="mt-12 max-w-4xl mx-auto bg-orange-50 rounded-lg p-8 text-center">
-          <Globe className="h-20 w-20 text-orange-500 mx-auto" />
+        <div className="mt-12 max-w-4xl mx-auto bg-primary/5 rounded-lg p-8 text-center">
+          <Globe className="h-20 w-20 text-primary mx-auto" />
           <p className="mt-4 text-lg font-semibold text-gray-800">Conectividad en los 5 continentes</p>
         </div>
         <div className="mt-12 max-w-4xl mx-auto">

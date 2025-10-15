@@ -5,7 +5,7 @@ export const EsimOrSim = () => {
   return (
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-orange-50 rounded-lg p-8 md:p-12">
+        <div className="bg-primary/5 rounded-lg p-8 md:p-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="flex flex-col items-center text-center">
               <img src="https://cdn-icons-png.flaticon.com/512/10479/10479937.png" alt="eSIM icon" className="h-24 w-24" />
@@ -18,7 +18,7 @@ export const EsimOrSim = () => {
             </div>
             <div className="text-center lg:text-left">
               <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
-                eSIM o SIM física - <span className="text-orange-500">Tú eliges</span>
+                eSIM o SIM física - <span className="text-primary">Tú eliges</span>
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Nuestra tecnología eSIM te permite activar tu plan de datos sin necesidad de una tarjeta SIM física. Solo escanea el código QR y listo.

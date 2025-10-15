@@ -51,7 +51,7 @@ const plans = [
 
 export const Pricing = () => {
   return (
-    <section className="bg-gray-50 py-20">
+    <section className="bg-secondary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
@@ -65,10 +65,10 @@ export const Pricing = () => {
           {plans.map((plan) => (
             <Card
               key={plan.name}
-              className={`flex flex-col rounded-lg shadow-lg ${plan.isPopular ? "border-2 border-orange-500 relative" : "border"}`}
+              className={`flex flex-col rounded-lg shadow-lg ${plan.isPopular ? "border-2 border-primary relative" : "border"}`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full">
                   MÁS POPULAR
                 </div>
               )}
@@ -79,7 +79,7 @@ export const Pricing = () => {
                   <span className="text-lg font-medium text-gray-500">/mes</span>
                 </p>
                 <CardDescription className="mt-2">{plan.description}</CardDescription>
-                <p className="mt-4 text-xl font-bold text-orange-500">{plan.data}</p>
+                <p className="mt-4 text-xl font-bold text-primary">{plan.data}</p>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col justify-between p-6">
                 <ul className="space-y-4 mb-8">
@@ -91,7 +91,8 @@ export const Pricing = () => {
                   ))}
                 </ul>
                 <Button
-                  className={`w-full py-3 text-lg ${plan.isPopular ? "bg-orange-500 hover:bg-orange-600 text-white" : "bg-white hover:bg-gray-100 text-orange-500 border border-orange-500"}`}
+                  variant={plan.isPopular ? "default" : "outline"}
+                  className={`w-full py-3 text-lg ${plan.isPopular ? "bg-primary hover:bg-primary/90 text-primary-foreground" : ""}`}
                 >
                   Elegir Plan
                 </Button>

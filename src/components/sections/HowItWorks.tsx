@@ -43,11 +43,11 @@ export const HowItWorks = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
               {steps.map((step, index) => (
                 <div key={step.name} className="flex flex-col items-center text-center">
-                  <div className="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-gray-200 text-orange-500 relative z-10">
-                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100">
+                  <div className="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-gray-200 text-primary relative z-10">
+                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary/10">
                       <step.icon className="h-8 w-8" />
                     </div>
-                    <span className="absolute -top-2 -right-2 flex items-center justify-center h-8 w-8 rounded-full bg-orange-500 text-white text-sm font-bold">
+                    <span className="absolute -top-2 -right-2 flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">
                       {index + 1}
                     </span>
                   </div>
