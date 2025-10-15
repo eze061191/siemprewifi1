@@ -35,31 +35,27 @@ export const HowItWorks = () => {
             En solo 4 simples pasos estarás conectado en cualquier parte del mundo.
           </p>
         </div>
-        <div className="mt-12 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <img 
-              src="https://drive.google.com/uc?export=view&id=1yze0Rjk9Vd96lf5w0UbdzNNs5by2Qco2" 
-              alt="Activación de eSIM escaneando código QR" 
-              className="rounded-lg shadow-lg w-full"
-            />
-          </div>
-          <div className="flex flex-col gap-8">
-            {steps.map((step, index) => (
-              <div key={step.name} className="flex items-start gap-6">
-                <div className="flex-shrink-0 flex flex-col items-center">
-                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100 text-orange-500 relative z-10">
-                    <step.icon className="h-8 w-8" />
+        <div className="mt-20">
+          <div className="relative">
+            {/* Connecting line for desktop */}
+            <div className="hidden md:block absolute top-10 left-0 w-full h-0.5 bg-gray-200"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative">
+              {steps.map((step, index) => (
+                <div key={step.name} className="flex flex-col items-center text-center">
+                  <div className="flex items-center justify-center h-20 w-20 rounded-full bg-white border-2 border-gray-200 text-orange-500 relative z-10">
+                    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-orange-100">
+                      <step.icon className="h-8 w-8" />
+                    </div>
                     <span className="absolute -top-2 -right-2 flex items-center justify-center h-8 w-8 rounded-full bg-orange-500 text-white text-sm font-bold">
                       {index + 1}
                     </span>
                   </div>
+                  <h3 className="mt-6 text-lg font-medium text-gray-900 font-serif">{step.name}</h3>
+                  <p className="mt-2 text-sm text-gray-500">{step.description}</p>
                 </div>
-                <div className="mt-1">
-                  <h3 className="text-lg font-medium text-gray-900 font-serif">{step.name}</h3>
-                  <p className="mt-1 text-gray-500">{step.description}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
