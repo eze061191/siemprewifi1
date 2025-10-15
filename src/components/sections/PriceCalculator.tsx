@@ -36,12 +36,13 @@ const DISCOUNT_PERCENTAGE = 0.10; // 10% de descuento
 export const PriceCalculator = () => {
   const [date, setDate] = React.useState<DateRange | undefined>();
   const [routers, setRouters] = React.useState(1);
+  const [destination, setDestination] = React.useState<string | undefined>();
   const [estimatedPrice, setEstimatedPrice] = React.useState<number | null>(null);
   const [days, setDays] = React.useState(0);
   const [discountApplied, setDiscountApplied] = React.useState(false);
 
   React.useEffect(() => {
-    if (date?.from && date?.to && routers > 0) {
+    if (date?.from && date?.to && routers > 0 && destination) {
       const calculatedDays = differenceInDays(date.to, date.from) + 1;
       setDays(calculatedDays);
 
@@ -60,7 +61,7 @@ export const PriceCalculator = () => {
       setDays(0);
       setDiscountApplied(false);
     }
-  }, [date, routers]);
+  }, [date, routers, destination]);
 
   const handleRoutersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value, 10);
@@ -83,7 +84,7 @@ export const PriceCalculator = () => {
         <div className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="destination">Destino</Label>
-            <Select>
+            <Select onValueChange={setDestination} value={destination}>
               <SelectTrigger id="destination" className="w-full focus:ring-primary">
                 <SelectValue placeholder="Selecciona tu destino" />
               </SelectTrigger>
@@ -130,6 +131,7 @@ export const PriceCalculator = () => {
                   onSelect={setDate}
                   numberOfMonths={2}
                   locale={es}
+                  disabled={{ before: new Date() }}
                 />
               </PopoverContent>
             </Popover>
