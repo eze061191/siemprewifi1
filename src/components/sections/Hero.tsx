@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Star, Check } from "lucide-react";
 import { HeroParticleEffect } from "@/components/effects/HeroParticleEffect";
+import { PriceCalculator } from "./PriceCalculator";
 
 export const Hero = () => {
   return (
@@ -51,6 +52,9 @@ export const Hero = () => {
                     <Check className="h-5 w-5 text-green-500" />
                     <span className="text-gray-600">Soporte 24/7</span>
                 </div>
+            </div>
+            <div className="mt-12">
+              <PriceCalculator />
             </div>
           </div>
           <div>
