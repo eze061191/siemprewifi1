@@ -91,7 +91,7 @@ const StyleGuide = () => {
       </section>
 
       {/* Components Section */}
-      <section>
+      <section className="mb-16">
         <h2 className="text-3xl font-bold mb-6 pb-2 border-b">Componentes</h2>
         <div className="space-y-12">
           <div>
@@ -173,6 +173,75 @@ const StyleGuide = () => {
                 Cambia tu contraseña aquí.
               </TabsContent>
             </Tabs>
+          </div>
+        </div>
+      </section>
+
+      {/* Animations & Effects Section */}
+      <section>
+        <h2 className="text-3xl font-bold mb-6 pb-2 border-b">Animaciones y Efectos</h2>
+        <div className="space-y-12">
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Animaciones CSS</h3>
+            <p className="mb-4 text-muted-foreground">
+              Utilizamos animaciones sutiles para mejorar la experiencia del usuario. Estas están definidas en `tailwind.config.ts`.
+            </p>
+            <Card className="w-full max-w-md">
+              <CardHeader>
+                <CardTitle>Animación de Acordeón</CardTitle>
+                <CardDescription>
+                  El componente de acordeón utiliza las siguientes animaciones:
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>
+                    <code className="bg-muted px-2 py-1 rounded">accordion-down</code>: Desliza el contenido hacia abajo al abrir.
+                  </li>
+                  <li>
+                    <code className="bg-muted px-2 py-1 rounded">accordion-up</code>: Desliza el contenido hacia arriba al cerrar.
+                  </li>
+                </ul>
+                <p className="mt-4">
+                  Puedes ver esta animación en acción en el componente de Acordeón de arriba.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Efectos Interactivos (p5.js)</h3>
+            <p className="mb-4 text-muted-foreground">
+              Para una experiencia más dinámica, utilizamos efectos visuales creados con p5.js.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Efecto de Partículas en Hero</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Un efecto de partículas flotantes que se encuentra en el fondo de la sección principal (Hero). Proporciona un ambiente sutil y tecnológico.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Componente: <code className="bg-muted px-2 py-1 rounded">HeroParticleEffect.tsx</code>
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Efecto de Cursor WiFi</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    Un efecto que genera ondas de señal WiFi al hacer clic en cualquier parte de la página, haciendo la interacción más atractiva.
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    Componente: <code className="bg-muted px-2 py-1 rounded">WifiCursorEffect.tsx</code>
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
