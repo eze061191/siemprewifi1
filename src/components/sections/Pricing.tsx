@@ -54,7 +54,7 @@ export const Pricing = () => {
     <section className="bg-gray-50 py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
             Planes diseñados para cada tipo de viajero
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
@@ -73,8 +73,8 @@ export const Pricing = () => {
                 </div>
               )}
               <CardHeader className="text-center pt-10">
-                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                <p className="text-4xl font-extrabold text-gray-900 mt-4">
+                <CardTitle className="text-2xl font-bold font-serif">{plan.name}</CardTitle>
+                <p className="text-4xl font-extrabold text-gray-900 mt-4 font-serif">
                   ${plan.price}
                   <span className="text-lg font-medium text-gray-500">/mes</span>
                 </p>

@@ -5,7 +5,7 @@ export const Cta = () => {
   return (
     <section className="bg-gray-900 text-white py-20" style={{backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl font-extrabold">
+        <h2 className="text-4xl font-extrabold font-serif">
           ¿Listo para viajar sin preocupaciones?
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-300">

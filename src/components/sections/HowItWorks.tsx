@@ -28,7 +28,7 @@ export const HowItWorks = () => {
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900">
+          <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
             Conectarte es tan fácil como 1-2-3
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
@@ -51,7 +51,7 @@ export const HowItWorks = () => {
                   </span>
                 </div>
                 <div className="mt-4">
-                  <h3 className="text-lg font-medium text-gray-900">{step.name}</h3>
+                  <h3 className="text-lg font-medium text-gray-900 font-serif">{step.name}</h3>
                 </div>
               </div>
             ))}

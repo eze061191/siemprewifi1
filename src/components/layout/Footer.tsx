@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
-            <span className="text-2xl font-bold text-white">SiempreWIFI</span>
+            <span className="text-2xl font-bold text-white font-serif">SiempreWIFI</span>
             <p className="mt-4 text-sm text-gray-400">
               Conectando viajeros en más de 160 países con la mejor tecnología eSIM. Internet confiable, rápido y seguro.
             </p>
@@ -18,7 +18,7 @@ export const Footer = () => {
             </div>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">Sobre Siempre WIFI</h3>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase font-serif">Sobre Siempre WIFI</h3>
             <ul className="mt-4 space-y-2">
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Sobre Nosotros</a></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Blog</a></li>
@@ -28,7 +28,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">Enlaces rápidos</h3>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase font-serif">Enlaces rápidos</h3>
             <ul className="mt-4 space-y-2">
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Ver Planes</a></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Cómo Funciona</a></li>
@@ -38,7 +38,7 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase">Destinos populares</h3>
+            <h3 className="text-sm font-semibold text-white tracking-wider uppercase font-serif">Destinos populares</h3>
             <ul className="mt-4 space-y-2">
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Europa</a></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Asia</a></li>
@@ -50,7 +50,7 @@ export const Footer = () => {
         </div>
         <div className="mt-8 border-t border-gray-800 pt-8">
             <div className="bg-gray-900 p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-6">
-                <h3 className="text-sm font-semibold text-white tracking-wider uppercase col-span-1 md:col-span-2">Contacto</h3>
+                <h3 className="text-sm font-semibold text-white tracking-wider uppercase col-span-1 md:col-span-2 font-serif">Contacto</h3>
                 <div className="flex items-start">
                     <Mail className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-orange-500" />
                     <div>
