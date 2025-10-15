@@ -1,6 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Globe } from "lucide-react";
 
 const countries = {
   america: ["Estados Unidos", "Canadá", "México", "Brasil", "Argentina", "Chile", "Colombia", "Perú"],
@@ -22,11 +21,12 @@ export const Coverage = () => {
             Mantente conectado en los destinos más populares del mundo
           </p>
         </div>
-        <div className="mt-12 max-w-4xl mx-auto bg-orange-50 rounded-lg p-8 text-center">
-          <Globe className="h-20 w-20 text-orange-500 mx-auto" />
-          <Button className="mt-6 bg-orange-500 hover:bg-orange-600 text-white rounded-full px-8">
-            160+ Países
-          </Button>
+        <div className="mt-12 max-w-4xl mx-auto">
+          <img 
+            src="https://drive.google.com/uc?export=view&id=1qrpvcBdQV-wkFqqVAw4faH8-4jIOfxqI" 
+            alt="Mapa de cobertura global de SiempreWIFI" 
+            className="rounded-lg shadow-lg w-full"
+          />
         </div>
         <div className="mt-12 max-w-4xl mx-auto">
           <Tabs defaultValue="america" className="w-full">
