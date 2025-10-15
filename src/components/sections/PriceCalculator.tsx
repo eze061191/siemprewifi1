@@ -35,7 +35,7 @@ export const PriceCalculator = () => {
   return (
     <Card className="shadow-2xl border-primary/20 border">
       <CardHeader className="text-center">
-        <CardTitle className="text-3xl font-bold font-serif">Calcula tu Precio</CardTitle>
+        <CardTitle className="text-3xl font-bold">Calcula tu Precio</CardTitle>
         <CardDescription>
           Elige tu destino y fechas para obtener una cotización instantánea
         </CardDescription>

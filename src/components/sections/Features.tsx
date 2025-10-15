@@ -23,7 +23,7 @@ export const Features = () => {
     <section className="bg-secondary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
+          <h2 className="text-3xl font-extrabold text-gray-900">
             ¿Por qué elegir Siempre WIFI?
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
@@ -37,7 +37,7 @@ export const Features = () => {
                 <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary/10 mx-auto">
                   <feature.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900 font-serif">
+                <h3 className="mt-6 text-lg font-medium text-gray-900">
                   {feature.name}
                 </h3>
                 <p className="mt-2 text-base text-gray-500">

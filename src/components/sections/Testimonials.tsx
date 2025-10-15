@@ -51,7 +51,7 @@ export const Testimonials = () => {
     <section className="bg-primary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-white font-serif">
+          <h2 className="text-3xl font-extrabold text-white">
             Más de 15,000 viajeros ya confían en nosotros
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-primary-foreground/90">
@@ -71,7 +71,7 @@ export const Testimonials = () => {
                   </blockquote>
                 </div>
                 <figcaption className="mt-6">
-                  <div className="font-bold text-gray-900 font-serif">{testimonial.name}</div>
+                  <div className="font-bold text-gray-900">{testimonial.name}</div>
                   <div className="text-gray-500 text-sm">{testimonial.location}</div>
                   <div className="flex items-center justify-between mt-2">
                     <div className="text-gray-500 text-xs">{testimonial.time}</div>

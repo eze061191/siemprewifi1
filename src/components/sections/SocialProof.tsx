@@ -32,7 +32,7 @@ export const SocialProof = () => {
             />
           </div>
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
+            <h2 className="text-3xl font-extrabold text-gray-900">
               Un dispositivo, hasta <span className="text-primary">5 conexiones</span>
             </h2>
             <p className="mt-4 text-xl text-gray-500">
@@ -45,7 +45,7 @@ export const SocialProof = () => {
                             <feature.icon className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h3 className="font-bold text-gray-800 font-serif">{feature.name}</h3>
+                            <h3 className="font-bold text-gray-800">{feature.name}</h3>
                             <p className="text-gray-600">{feature.description}</p>
                         </div>
                     </div>

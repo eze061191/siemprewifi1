@@ -17,14 +17,14 @@ export const EsimOrSim = () => {
               <p className="mt-4 font-semibold text-gray-800">Escanea y Activa</p>
             </div>
             <div className="text-center lg:text-left">
-              <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
+              <h2 className="text-3xl font-extrabold text-gray-900">
                 eSIM o SIM física - <span className="text-primary">Tú eliges</span>
               </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Nuestra tecnología eSIM te permite activar tu plan de datos sin necesidad de una tarjeta SIM física. Solo escanea el código QR y listo.
               </p>
               <div className="mt-6">
-                <h3 className="font-bold text-gray-800 font-serif">Dispositivos compatibles con eSIM:</h3>
+                <h3 className="font-bold text-gray-800">Dispositivos compatibles con eSIM:</h3>
                 <ul className="mt-4 space-y-2">
                   <li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500" /><span>iPhone XS y posteriores</span></li>
                   <li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500" /><span>Samsung Galaxy S20 y posteriores</span></li>

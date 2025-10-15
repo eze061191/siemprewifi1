@@ -10,7 +10,7 @@ export const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight font-serif">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
               Viaja conectado a más de{" "}
               <span className="text-primary">160 países</span> sin cambiar de
               SIM

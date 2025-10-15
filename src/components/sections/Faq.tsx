@@ -19,7 +19,7 @@ export const Faq = () => {
     <section className="bg-secondary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold text-gray-900 font-serif">
+          <h2 className="text-3xl font-extrabold text-gray-900">
             Preguntas Frecuentes
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
@@ -30,7 +30,7 @@ export const Faq = () => {
           <Accordion type="single" collapsible className="w-full space-y-2">
             {faqs.map((faq, index) => (
               <AccordionItem value={`item-${index}`} key={index} className="border-b">
-                <AccordionTrigger className="text-lg text-left font-medium hover:no-underline py-4 font-serif">
+                <AccordionTrigger className="text-lg text-left font-medium hover:no-underline py-4">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-base text-gray-600 pb-4">
