@@ -97,7 +97,7 @@ export const PlanFinder = () => {
             />
           </div>
           {destinationOpen && (
-            <CommandList className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-lg z-10">
+            <CommandList className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
               <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
               <CommandGroup>
                 {cities.map((city) => (
