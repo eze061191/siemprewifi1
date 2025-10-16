@@ -3,7 +3,7 @@
 import * as React from "react";
 import { format, differenceInDays } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar as CalendarIcon, Check, ChevronsUpDown, Globe } from "lucide-react";
+import { Calendar as CalendarIcon, Check, Globe } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
@@ -27,14 +27,16 @@ import { cities, City } from "@/data/cities";
 const PRICE_PER_DAY = 4.36;
 
 export const PlanFinder = () => {
-  const [destinationOpen, setDestinationOpen] = React.useState(false);
   const [dateOpen, setDateOpen] = React.useState(false);
-  
-  const [selectedCity, setSelectedCity] = React.useState<City | null>(null);
   const [date, setDate] = React.useState<DateRange | undefined>();
   
   const [days, setDays] = React.useState(0);
   const [totalPrice, setTotalPrice] = React.useState(0);
+
+  const [destinationOpen, setDestinationOpen] = React.useState(false);
+  const [selectedCity, setSelectedCity] = React.useState<City | null>(null);
+  const [searchValue, setSearchValue] = React.useState("");
+  const commandRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (date?.from && date?.to) {
@@ -47,9 +49,34 @@ export const PlanFinder = () => {
     }
   }, [date]);
 
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (commandRef.current && !commandRef.current.contains(event.target as Node)) {
+        setDestinationOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [commandRef]);
+
   const handleDateApply = () => {
     setDateOpen(false);
   };
+
+  const handleSelectCity = (city: City) => {
+    setSelectedCity(city);
+    setSearchValue(city.label);
+    setDestinationOpen(false);
+  };
+
+  const handleSearchChange = (search: string) => {
+    setSearchValue(search);
+    if (selectedCity && search !== selectedCity.label) {
+      setSelectedCity(null);
+    }
+  }
 
   return (
     <div className="w-full max-w-md">
@@ -57,55 +84,43 @@ export const PlanFinder = () => {
         Encuentra tu plan ideal
       </h3>
       <div className="space-y-3">
-        {/* Destination Picker */}
-        <Popover open={destinationOpen} onOpenChange={setDestinationOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={destinationOpen}
-              className="w-full justify-between h-14 text-base text-muted-foreground hover:bg-white border-gray-300 rounded-xl shadow-sm"
-            >
-              <div className="flex items-center">
-                <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
-                {selectedCity
-                  ? <span className="text-foreground">{selectedCity.flag} {selectedCity.label}</span>
-                  : "A dónde viajas?"}
-              </div>
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
-            <Command>
-              <CommandInput placeholder="Busca una ciudad..." />
-              <CommandList>
-                <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
-                <CommandGroup>
-                  {cities.map((city) => (
-                    <CommandItem
-                      key={city.value}
-                      value={city.label}
-                      onSelect={() => {
-                        setSelectedCity(city);
-                        setDestinationOpen(false);
-                      }}
-                    >
-                      <Check
-                        className={cn(
-                          "mr-2 h-4 w-4",
-                          selectedCity?.value === city.value
-                            ? "opacity-100"
-                            : "opacity-0"
-                        )}
-                      />
-                      {city.flag} {city.label}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
+        {/* Destination Search */}
+        <Command ref={commandRef} className="relative">
+          <div className="flex items-center w-full justify-between h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white pr-3">
+            <Globe className="ml-3 mr-3 h-5 w-5 shrink-0 opacity-50" />
+            <CommandInput
+              value={searchValue}
+              onValueChange={handleSearchChange}
+              onFocus={() => setDestinationOpen(true)}
+              placeholder="A dónde viajas?"
+              className="w-full h-full border-none focus:ring-0 p-0 text-base"
+            />
+          </div>
+          {destinationOpen && (
+            <CommandList className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-lg z-10">
+              <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
+              <CommandGroup>
+                {cities.map((city) => (
+                  <CommandItem
+                    key={city.value}
+                    value={city.label}
+                    onSelect={() => handleSelectCity(city)}
+                  >
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        selectedCity?.value === city.value
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                    {city.flag} {city.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          )}
+        </Command>
 
         {/* Date Range Picker */}
         <Popover open={dateOpen} onOpenChange={setDateOpen}>
@@ -114,19 +129,16 @@ export const PlanFinder = () => {
               id="date"
               variant={"outline"}
               className={cn(
-                "w-full justify-between text-left font-normal h-14 text-base text-muted-foreground hover:bg-white border-gray-300 rounded-xl shadow-sm",
+                "w-full justify-start text-left font-normal h-14 text-base text-muted-foreground hover:bg-white border-gray-300 rounded-xl shadow-sm",
                 !date && "text-muted-foreground"
               )}
             >
-              <div className="flex items-center">
-                  <CalendarIcon className="mr-3 h-5 w-5 opacity-50" />
-                  {days > 0 ? (
-                      <span className="text-foreground">{days} {days === 1 ? 'día' : 'días'}</span>
-                  ) : (
-                      "¿Por cuántos días?"
-                  )}
-              </div>
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              <CalendarIcon className="mr-3 h-5 w-5 opacity-50" />
+              {days > 0 ? (
+                  <span className="text-foreground">{days} {days === 1 ? 'día' : 'días'}</span>
+              ) : (
+                  "¿Por cuántos días?"
+              )}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
