@@ -217,19 +217,6 @@ const StyleGuide = () => {
             <div className="grid md:grid-cols-2 gap-8">
               <Card>
                 <CardHeader>
-                  <CardTitle>Efecto de Partículas en Hero</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Un efecto de partículas flotantes que se encuentra en el fondo de la sección principal (Hero). Proporciona un ambiente sutil y tecnológico.
-                  </p>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Componente: <code className="bg-muted px-2 py-1 rounded">HeroParticleEffect.tsx</code>
-                  </p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
                   <CardTitle>Efecto de Cursor WiFi</CardTitle>
                 </CardHeader>
                 <CardContent>
