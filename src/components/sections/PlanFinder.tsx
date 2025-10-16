@@ -85,9 +85,9 @@ export const PlanFinder = () => {
       </h3>
       <div className="space-y-3">
         {/* Destination Search */}
-        <Command ref={commandRef} className="relative">
-          <div className="flex items-center w-full justify-between h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white pr-3">
-            <Globe className="ml-3 mr-3 h-5 w-5 shrink-0 opacity-50" />
+        <Command ref={commandRef} className="relative overflow-visible">
+          <div className="flex items-center w-full h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white px-3">
+            <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
             <CommandInput
               value={searchValue}
               onValueChange={handleSearchChange}
