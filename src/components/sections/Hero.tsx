@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Star, Check } from "lucide-react";
-import { PriceCalculator } from "./PriceCalculator";
+import { PlanFinder } from "./PlanFinder";
 
 export const Hero = () => {
   return (
@@ -52,7 +52,7 @@ export const Hero = () => {
                 </div>
             </div>
             <div className="mt-12">
-              <PriceCalculator />
+              <PlanFinder />
             </div>
           </div>
           <div>
