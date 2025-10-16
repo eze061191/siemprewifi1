@@ -22,7 +22,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { destinations, Destination } from "@/data/destinations";
+import { cities, City } from "@/data/cities";
 
 const PRICE_PER_DAY = 4.36;
 
@@ -30,7 +30,7 @@ export const PlanFinder = () => {
   const [destinationOpen, setDestinationOpen] = React.useState(false);
   const [dateOpen, setDateOpen] = React.useState(false);
   
-  const [selectedDestination, setSelectedDestination] = React.useState<Destination | null>(null);
+  const [selectedCity, setSelectedCity] = React.useState<City | null>(null);
   const [date, setDate] = React.useState<DateRange | undefined>();
   
   const [days, setDays] = React.useState(0);
@@ -68,8 +68,8 @@ export const PlanFinder = () => {
             >
               <div className="flex items-center">
                 <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
-                {selectedDestination
-                  ? <span className="text-foreground">{selectedDestination.flag} {selectedDestination.label}</span>
+                {selectedCity
+                  ? <span className="text-foreground">{selectedCity.flag} {selectedCity.label}</span>
                   : "A dónde viajas?"}
               </div>
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -77,28 +77,28 @@ export const PlanFinder = () => {
           </PopoverTrigger>
           <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
             <Command>
-              <CommandInput placeholder="Busca un país..." />
+              <CommandInput placeholder="Busca una ciudad..." />
               <CommandList>
-                <CommandEmpty>No se encontró el destino.</CommandEmpty>
+                <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
                 <CommandGroup>
-                  {destinations.map((destination) => (
+                  {cities.map((city) => (
                     <CommandItem
-                      key={destination.value}
-                      value={destination.label}
+                      key={city.value}
+                      value={city.label}
                       onSelect={() => {
-                        setSelectedDestination(destination);
+                        setSelectedCity(city);
                         setDestinationOpen(false);
                       }}
                     >
                       <Check
                         className={cn(
                           "mr-2 h-4 w-4",
-                          selectedDestination?.value === destination.value
+                          selectedCity?.value === city.value
                             ? "opacity-100"
                             : "opacity-0"
                         )}
                       />
-                      {destination.flag} {destination.label}
+                      {city.flag} {city.label}
                     </CommandItem>
                   ))}
                 </CommandGroup>
