@@ -103,7 +103,7 @@ export function DestinationMenu() {
                 <TabsContent value="countries" className="pt-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-h-[300px] overflow-y-auto">
                     {filteredCountries.map((dest) => (
-                      <DestinationItem key={dest.value} {...dest} variant="list" />
+                      <DestinationItem key={dest.value} {...dest} />
                     ))}
                   </div>
                 </TabsContent>
@@ -117,7 +117,7 @@ export function DestinationMenu() {
                 <TabsContent value="all" className="pt-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-h-[300px] overflow-y-auto">
                     {filteredAll.map((dest) => (
-                      <DestinationItem key={dest.value} {...dest} variant="list" />
+                      <DestinationItem key={dest.value} {...dest} />
                     ))}
                   </div>
                 </TabsContent>
