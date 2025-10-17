@@ -24,10 +24,17 @@ export const regionalDestinations = [
     { name: "América Central", value: "central-america-region" },
     { name: "América Latina", value: "latin-america-region" },
     { name: "Asia", value: "asia-region" },
+    { name: "Balcanes", value: "balkans-region" },
     { name: "Caribe", value: "caribbean-region" },
+    { name: "China, Hong Kong, Macao", value: "china-hongkong-macao-region" },
+    { name: "Escandinavia", value: "scandinavia-region" },
     { name: "Europa", value: "europe-region" },
+    { name: "Europa del Este", value: "eastern-europe-region" },
+    { name: "Japón y China", value: "japan-china-region" },
+    { name: "Japón y Corea del Sur", value: "japan-southkorea-region" },
     { name: "Norteamérica", value: "north-america-region" },
     { name: "Oceanía", value: "oceania-region" },
+    { name: "Oriente Medio", value: "middle-east-region" },
 ];
 
 export const allCountries = [
