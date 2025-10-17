@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { allDestinations, Destination } from "@/data/all-destinations"
 import { DestinationItem } from "@/components/ui/DestinationItem"
-import { DestinationHeaderCta } from "@/components/sections/DestinationHeaderCta" // Importar nuevo componente
+import { DestinationCta } from "@/components/sections/DestinationCta" // Importar componente original
 
 // Definiciones manuales para la pestaña Popular (basadas en la imagen de referencia y la lista consolidada)
 const popularDestinationsManual: Destination[] = [
@@ -51,7 +51,6 @@ export function Destinations() {
 
   return (
     <>
-      <DestinationHeaderCta />
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-2">Destinos</h1>
         <p className="text-gray-600 mb-6">Encuentra el plan perfecto para tu viaje.</p>
@@ -111,6 +110,7 @@ export function Destinations() {
           </TabsContent>
         </Tabs>
       </div>
+      <DestinationCta />
     </>
   )
 }
