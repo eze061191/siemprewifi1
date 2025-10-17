@@ -45,21 +45,21 @@ export function Destinations() {
         <TabsContent value="popular" className="pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredPopular.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} />
+              <DestinationItem key={dest.value} {...dest} variant="card" />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="regional" className="pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredRegional.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} />
+              <DestinationItem key={dest.value} {...dest} variant="card" />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="countries" className="pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCountries.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} />
+              <DestinationItem key={dest.value} {...dest} variant="card" />
             ))}
           </div>
         </TabsContent>
