@@ -1,15 +1,14 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Faq } from "@/components/sections/Faq";
 import { QuantityInput } from "@/components/ui/quantity-input";
-import { Star, InfinityIcon, Wifi, ShieldCheck, CheckCircle, MessageSquare, Clock, Globe, Minus, Plus } from 'lucide-react';
+import { Star, Minus, Plus } from 'lucide-react';
 import { HowItWorks } from '@/components/sections/HowItWorks';
-import { LiquidRadioGroup } from '@/components/ui/liquid-radio';
+import { PlanInfoTabs } from '@/components/ui/plan-info-tabs';
 
 const PlanDetails = () => {
   const [searchParams] = useSearchParams();
@@ -18,7 +17,6 @@ const PlanDetails = () => {
 
   const [numDays, setNumDays] = React.useState(parseInt(days, 10));
   const [numESims, setNumESims] = React.useState(1);
-  const [infoTab, setInfoTab] = React.useState('coverage');
 
   const pricePerDay = 5.99;
   const total = numDays * numESims * pricePerDay;
@@ -50,35 +48,15 @@ const PlanDetails = () => {
                 <img src="/Post - Conectividad global al alcance de tu mano.png" alt="Mujer en la playa" className="object-cover w-full h-full" />
                 <div className="p-8 flex flex-col">
                   <h1 className="text-3xl font-extrabold capitalize">eSIM en {destination}</h1>
-                  <div className="flex items-center gap-2 mt-2">
+                  <div className="flex items-center gap-2 mt-2 mb-6">
                     <div className="flex text-primary">
                       {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="h-5 w-5" />)}
                     </div>
                     <p className="text-gray-600 font-medium">Excelente</p>
                   </div>
-                  <Separator className="my-6" />
-                  <div className="space-y-4 text-gray-700">
-                    <div className="flex items-center gap-3"><InfinityIcon className="h-5 w-5 text-primary" /><span>Datos ilimitados</span></div>
-                    <div className="flex items-center gap-3"><Wifi className="h-5 w-5 text-primary" /><span>Internet rápido y confiable</span></div>
-                    <div className="flex items-center gap-3"><ShieldCheck className="h-5 w-5 text-primary" /><span>Sin más cargos por roaming</span></div>
-                  </div>
-                  <div className="mt-auto pt-6">
-                    <LiquidRadioGroup
-                      value={infoTab}
-                      onValueChange={setInfoTab}
-                      options={[
-                        { value: 'coverage', label: 'Cobertura' },
-                        { value: 'compatibility', label: 'Compatibilidad' },
-                      ]}
-                    />
-                    <div className="mt-4 text-sm text-muted-foreground min-h-[40px]">
-                      {infoTab === 'coverage' ? (
-                        <p>Aquí puedes ver un mapa de cobertura y detalles de la red para {destination}.</p>
-                      ) : (
-                        <p>Asegúrate de que tu teléfono sea compatible con la tecnología eSIM antes de comprar.</p>
-                      )}
-                    </div>
-                  </div>
+                  
+                  <PlanInfoTabs destination={destination} />
+
                 </div>
               </div>
             </Card>
