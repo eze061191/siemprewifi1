@@ -1,36 +1,31 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
-import StyleGuide from "./pages/StyleGuide";
+import { Home } from "./pages/Home";
+import { HowItWorks } from "./pages/HowItWorks";
+import { AboutUs } from "./pages/AboutUs";
+import { Faq } from "./pages/Faq";
+import { Contact } from "./pages/Contact";
+import { Compatibility } from "./pages/Compatibility";
 import PlanDetails from "./pages/Plans";
-import DestinationsPage from "./pages/Destinations";
+import { Destinations } from "./pages/Destinations";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <Router>
+      <Layout>
         <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Index />} />
-            <Route path="/style-guide" element={<StyleGuide />} />
-            <Route path="/plans" element={<PlanDetails />} />
-            <Route path="/destinations" element={<DestinationsPage />} />
-          </Route>
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/compatibility" element={<Compatibility />} />
+          <Route path="/plans/:destination" element={<PlanDetails />} />
+          <Route path="/destinations" element={<Destinations />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </Layout>
+    </Router>
+  );
+}
 
 export default App;
