@@ -64,22 +64,25 @@ export function Destinations() {
           </div>
         </TabsContent>
         <TabsContent value="cities" className="pt-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCities.map((city) => (
-              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="list" />
+              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="card" />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="all" className="pt-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Regional destinations */}
             {filteredRegional.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} variant="list" />
+              <DestinationItem key={dest.value} {...dest} variant="card" />
             ))}
+            {/* Countries */}
             {filteredCountries.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} variant="list" />
+              <DestinationItem key={dest.value} {...dest} variant="card" />
             ))}
+            {/* Cities */}
             {filteredCities.map((city) => (
-              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="list" />
+              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="card" />
             ))}
           </div>
         </TabsContent>
