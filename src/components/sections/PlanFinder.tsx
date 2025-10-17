@@ -3,7 +3,7 @@
 import * as React from "react";
 import { format, differenceInDays } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar as CalendarIcon, Check, Globe, Info } from "lucide-react";
+import { Calendar as CalendarIcon, Check, Globe, Info, MapPin, Earth } from "lucide-react";
 import { DateRange } from "react-day-picker";
 import { useNavigate } from "react-router-dom";
 
@@ -23,8 +23,9 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { cities, City } from "@/data/cities";
+import { Destination, allDestinations, DestinationType } from "@/data/all-destinations";
 import { GetStartedButton } from "@/components/ui/get-started-button";
+import { Badge } from "@/components/ui/badge";
 
 const PRICE_PER_DAY = 4.36;
 
@@ -37,7 +38,7 @@ export const PlanFinder = () => {
   const [totalPrice, setTotalPrice] = React.useState(0);
 
   const [destinationOpen, setDestinationOpen] = React.useState(false);
-  const [selectedCity, setSelectedCity] = React.useState<City | null>(null);
+  const [selectedDestination, setSelectedDestination] = React.useState<Destination | null>(null);
   const [searchValue, setSearchValue] = React.useState("");
   const commandRef = React.useRef<HTMLDivElement>(null);
 
@@ -68,30 +69,42 @@ export const PlanFinder = () => {
     setDateOpen(false);
   };
 
-  const handleSelectCity = (city: City) => {
-    setSelectedCity(city);
-    setSearchValue(city.label);
+  const handleSelectDestination = (destination: Destination) => {
+    setSelectedDestination(destination);
+    setSearchValue(destination.label);
     setDestinationOpen(false);
   };
 
   const handleSearchChange = (search: string) => {
     setSearchValue(search);
-    if (selectedCity && search !== selectedCity.label) {
-      setSelectedCity(null);
+    if (selectedDestination && search !== selectedDestination.label) {
+      setSelectedDestination(null);
     }
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (!selectedCity) {
+    if (!selectedDestination) {
       // Opcional: mostrar un error si no se selecciona destino
       alert("Por favor, selecciona un destino.");
       return;
     }
-    const destination = selectedCity.value;
+    const destination = selectedDestination.value;
     const duration = days > 0 ? days : 7; // Valor por defecto si no se eligen días
     navigate(`/plans?destination=${destination}&days=${duration}`);
   };
+
+  const getIconForType = (type: DestinationType) => {
+    switch (type) {
+      case 'Ciudad':
+        return <MapPin className="h-4 w-4 text-blue-500" />;
+      case 'Región':
+        return <Earth className="h-4 w-4 text-green-500" />;
+      case 'País':
+      default:
+        return <Globe className="h-4 w-4 text-primary" />;
+    }
+  }
 
   return (
     <div className="w-full max-w-md">
@@ -113,23 +126,34 @@ export const PlanFinder = () => {
           </div>
           {destinationOpen && (
             <CommandList className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-lg z-[52] max-h-60 overflow-y-auto">
-              <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
+              <CommandEmpty>No se encontró el destino.</CommandEmpty>
               <CommandGroup>
-                {cities.map((city) => (
+                {allDestinations.map((dest) => (
                   <CommandItem
-                    key={city.value}
-                    value={city.label}
-                    onSelect={() => handleSelectCity(city)}
+                    key={dest.value}
+                    value={dest.label}
+                    onSelect={() => handleSelectDestination(dest)}
+                    className="flex justify-between items-center"
                   >
-                    <Check
-                      className={cn(
-                        "mr-2 h-4 w-4",
-                        selectedCity?.value === city.value
-                          ? "opacity-100"
-                          : "opacity-0"
+                    <div className="flex items-center gap-2">
+                      <Check
+                        className={cn(
+                          "mr-2 h-4 w-4",
+                          selectedDestination?.value === dest.value
+                            ? "opacity-100"
+                            : "opacity-0"
+                        )}
+                      />
+                      {dest.flag ? (
+                        <span className="mr-2">{dest.flag}</span>
+                      ) : (
+                        <span className="mr-2">{getIconForType(dest.type)}</span>
                       )}
-                    />
-                    {city.flag} {city.label}
+                      {dest.label}
+                    </div>
+                    <Badge variant="secondary" className="text-xs font-normal">
+                      {dest.type}
+                    </Badge>
                   </CommandItem>
                 ))}
               </CommandGroup>
