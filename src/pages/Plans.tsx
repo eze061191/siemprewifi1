@@ -9,6 +9,7 @@ import { QuantityInput } from "@/components/ui/quantity-input";
 import { Star, Minus, Plus } from 'lucide-react';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { PlanInfoTabs } from '@/components/ui/plan-info-tabs';
+import { PaymentInfo } from '@/components/sections/PaymentInfo';
 
 const PlanDetails = () => {
   const [searchParams] = useSearchParams();
@@ -100,6 +101,7 @@ const PlanDetails = () => {
         </div>
       </div>
       
+      <PaymentInfo />
       <HowItWorks />
       <Faq />
     </div>
