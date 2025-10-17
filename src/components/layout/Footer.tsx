@@ -31,7 +31,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-sm font-semibold text-white tracking-wider uppercase">Enlaces rápidos</h3>
             <ul className="mt-4 space-y-2">
-              <li><a href="#" className="text-base text-gray-400 hover:text-white">Ver Planes</a></li>
+              <li><Link to="/destinations" className="text-base text-gray-400 hover:text-white">Ver Planes</Link></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Cómo Funciona</a></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Cobertura</a></li>
               <li><a href="#" className="text-base text-gray-400 hover:text-white">Compatibilidad</a></li>

@@ -19,18 +19,18 @@ export const Header = () => {
           </div>
           <nav className="hidden md:flex md:space-x-2 items-center">
             <DestinationMenu />
-            {/* Using Link component with ghost variant for navigation */}
-            <Link to="/about-us" variant="ghost" className={navLinkClasses}>
-              Sobre Nosotros
+            {/* Usaremos el enlace de Destinos en el menú de navegación principal */}
+            <Link to="/destinations" variant="ghost" className={navLinkClasses}>
+              Destinos
+            </Link>
+            <Link to="/style-guide" variant="ghost" className={navLinkClasses}>
+              Guía de Estilos
             </Link>
             <Link to="/blog" variant="ghost" className={navLinkClasses}>
               Blog
             </Link>
             <Link to="/account" variant="ghost" className={navLinkClasses}>
               Mi cuenta
-            </Link>
-            <Link to="/contact" variant="ghost" className={navLinkClasses}>
-              Contáctenos
             </Link>
           </nav>
           <div className="flex items-center">
