@@ -15,7 +15,7 @@ const items = [
   },
 ];
 
-export const TrustBadges = () => {
+const TrustBadges = () => {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,3 +31,5 @@ export const TrustBadges = () => {
     </section>
   );
 };
+
+export default TrustBadges;
