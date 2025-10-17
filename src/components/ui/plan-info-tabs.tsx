@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { InfinityIcon, Zap, ShieldCheck, Signal, Radio, Smartphone } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface PlanInfoTabsProps {
   destination: string;
 }
 
-type Tab = 'details' | 'coverage' | 'compatibility';
+type Tab = 'details' | 'coverage';
 
 export const PlanInfoTabs: React.FC<PlanInfoTabsProps> = ({ destination }) => {
   const [activeTab, setActiveTab] = useState<Tab>('details');
@@ -51,16 +58,6 @@ export const PlanInfoTabs: React.FC<PlanInfoTabsProps> = ({ destination }) => {
             </div>
           </div>
         );
-      case 'compatibility':
-        return (
-          <div className="flex items-start gap-3 text-sm">
-            <Smartphone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">Compatibilidad de tu dispositivo:</p>
-              <p className="text-muted-foreground">Para usar una eSIM, tu teléfono debe estar desbloqueado por el operador y ser compatible con eSIM. <a href="#" className="text-primary underline">Consulta la lista de dispositivos compatibles.</a></p>
-            </div>
-          </div>
-        );
       default:
         return null;
     }
@@ -68,37 +65,48 @@ export const PlanInfoTabs: React.FC<PlanInfoTabsProps> = ({ destination }) => {
 
   return (
     <div className="w-full">
-      <div className="p-1 bg-muted rounded-xl flex items-center justify-between mb-6">
-        <Button
-          variant="ghost"
-          onClick={() => setActiveTab('details')}
-          className={cn(
-            "w-full rounded-lg transition-colors duration-300 text-muted-foreground font-semibold",
-            activeTab === 'details' && 'bg-background shadow-sm text-foreground'
-          )}
-        >
-          Detalles de eSIM
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => setActiveTab('coverage')}
-          className={cn(
-            "w-full rounded-lg transition-colors duration-300 text-muted-foreground font-semibold",
-            activeTab === 'coverage' && 'bg-background shadow-sm text-foreground'
-          )}
-        >
-          Cobertura
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => setActiveTab('compatibility')}
-          className={cn(
-            "w-full rounded-lg transition-colors duration-300 text-muted-foreground font-semibold",
-            activeTab === 'compatibility' && 'bg-background shadow-sm text-foreground'
-          )}
-        >
-          Compatibilidad
-        </Button>
+      <div className="flex items-center justify-between gap-2 mb-6">
+        <div className="p-1 bg-muted rounded-xl flex items-center flex-grow">
+          <Button
+            variant="ghost"
+            onClick={() => setActiveTab('details')}
+            className={cn(
+              "w-full rounded-lg transition-colors duration-300 text-muted-foreground font-semibold",
+              activeTab === 'details' && 'bg-background shadow-sm text-foreground'
+            )}
+          >
+            Detalles
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={() => setActiveTab('coverage')}
+            className={cn(
+              "w-full rounded-lg transition-colors duration-300 text-muted-foreground font-semibold",
+              activeTab === 'coverage' && 'bg-background shadow-sm text-foreground'
+            )}
+          >
+            Cobertura
+          </Button>
+        </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="outline" className="flex-shrink-0 h-10 px-3 sm:px-4 text-sm">
+              Compatibilidad
+              <Smartphone className="ml-2 h-4 w-4" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Compatibilidad de tu dispositivo</DialogTitle>
+            </DialogHeader>
+            <div className="flex items-start gap-3 text-sm mt-4">
+              <Smartphone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <div>
+                <p>Para usar una eSIM, tu teléfono debe estar desbloqueado por el operador y ser compatible con eSIM. <a href="#" className="text-primary underline">Consulta la lista de dispositivos compatibles.</a></p>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="min-h-[150px]">
         {renderContent()}
