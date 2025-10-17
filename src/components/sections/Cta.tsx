@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Tag, CheckCircle } from "lucide-react";
 
-const Cta = () => {
+export const Cta = () => {
   return (
     <section className="bg-gray-900 text-white py-20" style={{backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center'}}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -27,5 +27,3 @@ const Cta = () => {
     </section>
   );
 };
-
-export default Cta;

@@ -46,7 +46,7 @@ const testimonials = [
   },
 ];
 
-const Testimonials = () => {
+export const Testimonials = () => {
   return (
     <section className="bg-primary py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,5 +90,3 @@ const Testimonials = () => {
     </section>
   );
 };
-
-export default Testimonials;
