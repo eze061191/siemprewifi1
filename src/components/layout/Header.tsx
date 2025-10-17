@@ -3,6 +3,8 @@ import { DestinationMenu } from "./DestinationMenu";
 import { Link } from "@/components/ui/link"; // Import Link from ui/link
 
 export const Header = () => {
+  const navLinkClasses = "font-medium text-gray-500 hover:text-gray-900 transition-all duration-200 hover:shadow-md hover:shadow-primary/50 rounded-md";
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,16 +20,16 @@ export const Header = () => {
           <nav className="hidden md:flex md:space-x-2 items-center">
             <DestinationMenu />
             {/* Using Link component with ghost variant for navigation */}
-            <Link to="/about-us" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
+            <Link to="/about-us" variant="ghost" className={navLinkClasses}>
               Sobre Nosotros
             </Link>
-            <Link to="/blog" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
+            <Link to="/blog" variant="ghost" className={navLinkClasses}>
               Blog
             </Link>
-            <Link to="/account" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
+            <Link to="/account" variant="ghost" className={navLinkClasses}>
               Mi cuenta
             </Link>
-            <Link to="/contact" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
+            <Link to="/contact" variant="ghost" className={navLinkClasses}>
               Contáctenos
             </Link>
           </nav>
