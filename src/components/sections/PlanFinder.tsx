@@ -3,7 +3,7 @@
 import * as React from "react";
 import { format, differenceInDays } from "date-fns";
 import { es } from "date-fns/locale";
-import { Calendar as CalendarIcon, Check, Globe } from "lucide-react";
+import { Calendar as CalendarIcon, Check, Globe, Info } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
@@ -141,7 +141,12 @@ export const PlanFinder = () => {
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="w-auto p-4" align="start">
+            <h3 className="text-lg font-semibold text-center mb-2">Elige la fecha de tu plan</h3>
+            <div className="p-3 text-sm rounded-md bg-primary/10 flex items-center gap-2 mb-4">
+              <Info className="h-5 w-5 text-primary flex-shrink-0" />
+              <span className="text-gray-700">Tu plan comenzará una vez que llegues a tu destino y actives tu eSIM.</span>
+            </div>
             <Calendar
               initialFocus
               mode="range"
@@ -153,17 +158,19 @@ export const PlanFinder = () => {
               disabled={{ before: new Date() }}
             />
             {days > 0 && date?.from && date?.to && (
-              <div className="p-4 border-t">
-                  <p className="font-bold text-lg">Plan de {days} días</p>
-                  <p className="text-sm text-muted-foreground">
-                      {format(date.from, "d MMM", { locale: es })} - {format(date.to, "d MMM", { locale: es })}
-                  </p>
-                  <div className="flex justify-between items-center mt-2">
+              <div className="p-4 border-t mt-2">
+                  <div className="flex justify-between items-center">
                       <div>
-                          <span className="font-bold text-lg">Total: ${totalPrice.toFixed(2)} USD</span>
-                          <span className="text-sm text-muted-foreground ml-2">${PRICE_PER_DAY.toFixed(2)}/día</span>
+                          <p className="font-bold">Plan de {days} días</p>
+                          <p className="text-sm text-muted-foreground">
+                              {format(date.from, "d MMM", { locale: es })} - {format(date.to, "d MMM", { locale: es })}
+                          </p>
+                          <div className="flex items-baseline gap-2 mt-1">
+                            <p className="font-bold">Total: ${totalPrice.toFixed(2)} USD</p>
+                            <p className="text-sm text-muted-foreground">${PRICE_PER_DAY.toFixed(2)}/día</p>
+                          </div>
                       </div>
-                      <Button onClick={handleDateApply} className="bg-primary hover:bg-primary/90">Aplicar</Button>
+                      <Button onClick={handleDateApply} className="bg-primary hover:bg-primary/90 self-end">Aplicar</Button>
                   </div>
               </div>
             )}
