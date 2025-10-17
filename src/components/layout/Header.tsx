@@ -1,47 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import DestinationMenu from "./DestinationMenu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from 'lucide-react';
+import { DestinationMenu } from "./DestinationMenu";
 
-const Header = () => {
+export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="font-bold text-lg">Holafly</span>
-        </Link>
-        <div className="hidden md:flex items-center space-x-4">
-          <DestinationMenu />
-        </div>
-        <div className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost">Mi eSIM</Button>
-          <Button>Activa tu eSIM</Button>
-        </div>
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Link to="/" className="hover:text-foreground">Inicio</Link>
-                <Link to="/destinations" className="text-muted-foreground hover:text-foreground">Destinos</Link>
-                <Link to="/how-it-works" className="text-muted-foreground hover:text-foreground">¿Cómo funciona?</Link>
-                <Link to="/contact" className="text-muted-foreground hover:text-foreground">Contacto</Link>
-                <hr/>
-                <Button variant="ghost">Mi eSIM</Button>
-                <Button>Activa tu eSIM</Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+    <header className="bg-white shadow-sm sticky top-0 z-40">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center">
+            <span className="text-2xl font-bold text-gray-800">
+              SiempreWIFI
+            </span>
+          </div>
+          <nav className="hidden md:flex md:space-x-8 items-center">
+            <DestinationMenu />
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Sobre Nosotros
+            </a>
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Blog
+            </a>
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Mi cuenta
+            </a>
+            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+              Contáctenos
+            </a>
+          </nav>
+          <div className="flex items-center">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">
+              Ver Planes
+            </Button>
+          </div>
         </div>
       </div>
     </header>
   );
 };
-
-export default Header;
