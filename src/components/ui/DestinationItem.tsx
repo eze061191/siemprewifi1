@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { FlagImage } from "./FlagImage";
+import { ArrowRight } from "lucide-react";
 
 interface DestinationItemProps {
   name: string;
@@ -29,14 +30,18 @@ export const DestinationItem: React.FC<DestinationItemProps> = ({
     );
   }
 
-  // Card variant (Popular section style)
+  // Card variant (Used for Popular, Regional, Countries tabs)
+  // Este diseño imita la estructura de lista de la imagen, pero con el FlagImage circular.
   return (
     <Link to={`/plans?destination=${value}`} className="block h-full">
       <Card className="h-full transition-all duration-300 hover:shadow-lg hover:border-primary/50">
-        <CardContent className="p-6 flex flex-col items-center text-center">
-          <FlagImage flagUrl={flag} isRegional={isRegional} className="mb-4" />
-          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-          <p className="text-sm text-primary font-medium mt-1">Ver planes</p>
+        <CardContent className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            {/* Usamos FlagImage en lugar del emoji simple */}
+            <FlagImage flagUrl={flag} isRegional={isRegional} className="h-10 w-10 text-xl flex-shrink-0" />
+            <h3 className="text-base font-semibold text-gray-800">{name}</h3>
+          </div>
+          <ArrowRight className="h-5 w-5 text-primary" />
         </CardContent>
       </Card>
     </Link>

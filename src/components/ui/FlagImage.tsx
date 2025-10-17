@@ -28,10 +28,10 @@ export const FlagImage: React.FC<FlagImageProps> = ({ flagUrl, isRegional = fals
     // Estilo para destinos regionales (como el globo en la referencia)
     return (
       <div className={cn(
-        "h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center shadow-lg",
+        "rounded-full bg-blue-100 flex items-center justify-center shadow-md",
         className
       )}>
-        <Globe className="h-8 w-8 text-blue-600" />
+        <Globe className="h-5 w-5 text-blue-600" />
       </div>
     );
   }
@@ -39,7 +39,7 @@ export const FlagImage: React.FC<FlagImageProps> = ({ flagUrl, isRegional = fals
   // Estilo para países individuales (simulando la bandera circular)
   return (
     <div className={cn(
-      "h-16 w-16 rounded-full flex items-center justify-center text-3xl overflow-hidden shadow-lg bg-white border border-gray-100",
+      "rounded-full flex items-center justify-center text-xl overflow-hidden shadow-md bg-white border border-gray-100",
       className
     )}>
       {/* Usamos el emoji de la bandera directamente para la demostración */}
