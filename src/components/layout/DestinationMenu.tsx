@@ -33,7 +33,7 @@ export function DestinationMenu() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>¿A dónde viajas?</NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="z-[51]"> {/* Aumentamos el z-index aquí */}
             <div className="p-4 w-[300px] md:w-[600px] lg:w-[800px]">
               <div className="flex justify-between items-center mb-4 gap-4">
                 <div className="relative flex-grow">
