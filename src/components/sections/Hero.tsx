@@ -5,7 +5,7 @@ import { PlanFinder } from "./PlanFinder";
 export const Hero = () => {
   return (
     <section className="relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
