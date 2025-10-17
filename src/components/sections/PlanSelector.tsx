@@ -190,7 +190,7 @@ export const PlanSelector: React.FC<PlanSelectorProps> = ({ destinationName, ima
                                             variant="ghost" 
                                             size="icon" 
                                             onClick={() => handleEsimCountChange(-1)}
-                                            disabled={esimCount <= 1} // Usamos 'disabled' ya que es el estándar HTML y la mayoría de las implementaciones de shadcn/ui lo usan. Si el error persiste, significa que la implementación local de Button requiere 'isDisabled'.
+                                            isDisabled={esimCount <= 1}
                                         >
                                             <Minus className="h-4 w-4" />
                                         </Button>
