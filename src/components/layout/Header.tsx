@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DestinationMenu } from "./DestinationMenu";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/ui/link"; // Import Link from ui/link
 
 export const Header = () => {
   return (
@@ -14,20 +14,21 @@ export const Header = () => {
               </span>
             </Link>
           </div>
-          <nav className="hidden md:flex md:space-x-8 items-center">
+          <nav className="hidden md:flex md:space-x-2 items-center">
             <DestinationMenu />
-            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+            {/* Using Link component with ghost variant for navigation */}
+            <Link to="/about-us" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
               Sobre Nosotros
-            </a>
-            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+            </Link>
+            <Link to="/blog" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
               Blog
-            </a>
-            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+            </Link>
+            <Link to="/account" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
               Mi cuenta
-            </a>
-            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
+            </Link>
+            <Link to="/contact" variant="ghost" className="font-medium text-gray-500 hover:text-gray-900">
               Contáctenos
-            </a>
+            </Link>
           </nav>
           <div className="flex items-center">
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">

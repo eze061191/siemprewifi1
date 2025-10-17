@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Button, type ButtonProps } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
+import { Button, ButtonProps } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const GetStartedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -8,19 +8,19 @@ const GetStartedButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Button
         ref={ref}
-        className={cn("group relative overflow-hidden", className)}
+        className={cn(
+          "bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6 py-3 text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2",
+          className
+        )}
         {...props}
       >
-        <span className="mr-8 transition-opacity duration-500 group-hover:opacity-0">
-          {children}
-        </span>
-        <i className="absolute right-1 top-1 bottom-1 rounded-sm z-10 grid w-1/4 place-items-center transition-all duration-500 bg-primary-foreground/15 group-hover:w-[calc(100%-0.5rem)] group-active:scale-95 text-white">
-          <ChevronRight size={16} strokeWidth={2} aria-hidden="true" />
-        </i>
+        {children}
+        <ArrowRight className="h-5 w-5 ml-1 transition-transform group-hover:translate-x-1" />
       </Button>
     );
   }
 );
+
 GetStartedButton.displayName = "GetStartedButton";
 
 export { GetStartedButton };
