@@ -6,6 +6,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { SingleTestimonial } from "@/components/sections/SingleTestimonial";
 import { Faq } from "@/components/sections/Faq";
 import { PaymentInfo } from "@/components/sections/PaymentInfo";
+import { DestinationCta } from "@/components/sections/DestinationCta"; // Importar nuevo componente
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
@@ -44,6 +45,8 @@ const PlanDetail = () => {
             <WhyChooseUs />
 
             <SingleTestimonial />
+            
+            <DestinationCta /> {/* Nuevo CTA aquí */}
 
             <Faq />
 
