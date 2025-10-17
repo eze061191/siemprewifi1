@@ -1,19 +1,18 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from './Header';
-import { Footer } from './Footer';
-import { WifiCursorEffect } from '@/components/effects/WifiCursorEffect';
+import Header from './Header';
+import Footer from './Footer';
 
-export const Layout = () => {
+const Layout = () => {
   return (
-    <div className="bg-white relative">
-      <WifiCursorEffect />
-      <div className="relative z-10 flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };
+
+export default Layout;
