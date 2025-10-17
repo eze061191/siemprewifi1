@@ -1,7 +1,8 @@
 import * as React from "react"
 import useEmblaCarousel, {
-  type UseEmblaCarouselType, // Corrected import name
-  type EmblaOptionsType,
+  type UseEmblaCarouselType,
+  // FIX: EmblaOptionsType is available directly from the package root
+  type EmblaOptionsType, 
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -10,10 +11,13 @@ import { Button } from "@/components/ui/button"
 
 // Extract EmblaCarouselType (the API instance) from the UseEmblaCarouselType tuple
 type EmblaCarouselType = UseEmblaCarouselType[1];
+// Extract EmblaRefType (the HTML element ref)
+type EmblaRefType = UseEmblaCarouselType[0];
 
 type CarouselOptions = EmblaOptionsType
 type CarouselContextProps = {
-  carouselRef: React.MutableRefObject<EmblaCarouselType | null>
+  // FIX: carouselRef should be the ref to the HTML element (viewport)
+  carouselRef: EmblaRefType
   options: CarouselOptions
   orientation: "horizontal" | "vertical"
   scrollPrev: () => void
@@ -104,9 +108,8 @@ const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          // FIX: The ref returned by useEmblaCarousel is compatible with the viewport element, 
-          // but we need to assert the API type for the context.
-          carouselRef: carouselRef as React.MutableRefObject<EmblaCarouselType | null>,
+          // FIX: Pass the HTML element ref directly
+          carouselRef: carouselRef,
           options,
           orientation:
             orientation || (options?.axis === "y" ? "vertical" : "horizontal"),

@@ -28,8 +28,8 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(({ className, varian
       ref={ref}
       // Use RouterLink as the underlying element to handle 'to' prop
       elementType={RouterLink}
-      // Pass 'to' directly. RouterLink expects 'to', not 'href'.
-      to={to}
+      // Pass 'to' as 'href'. RouterLink will receive 'to' via its props when rendered by AriaLink.
+      href={to as string} // Cast 'to' to string for AriaLink compatibility
       className={composeRenderProps(className, (className) =>
         cn(
           buttonVariants({
