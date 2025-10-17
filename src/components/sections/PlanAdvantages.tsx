@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { MessageCircle, Award, InfinityIcon, Headset, MailFast, Users } from "lucide-react";
+import { MessageCircle, Award, InfinityIcon, Headset, Send, Users } from "lucide-react";
 
 interface PlanAdvantagesProps {
     destination: string;
@@ -29,7 +29,7 @@ export const PlanAdvantages: React.FC<PlanAdvantagesProps> = ({ destination }) =
             description: "La eSIM es fácil de usar, pero si tienes preguntas o problemas técnicos, puedes contactarnos por correo electrónico o por nuestro chat de soporte 24 horas."
         },
         {
-            icon: MailFast,
+            icon: Send,
             title: "Entrega inmediata",
             description: "Si tienes prisa o ya estas viajando, no te preocupes, nosotros te enviaremos la eSIM inmediatamente luego de tu compra a través de email, así te conectas en pocos segundos."
         },
