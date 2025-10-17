@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/layout/Layout";
 import Index from "./pages/Index";
-import { Destinations } from "./pages/Destinations";
+import Destinations from "./pages/Destinations"; // Importación corregida
 import NotFound from "./pages/NotFound";
 import StyleGuide from "./pages/StyleGuide";
 

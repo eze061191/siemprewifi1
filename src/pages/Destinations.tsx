@@ -87,3 +87,5 @@ export function Destinations() {
     </div>
   )
 }
+
+export default Destinations;
