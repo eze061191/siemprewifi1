@@ -31,18 +31,16 @@ export function PlanFinder() {
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
-    // Abrir el menú si hay texto o si se hace clic
-    setOpen(true);
+    if (value.length > 0) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
     setSelectedDestination(null);
   };
 
   const filteredDestinations = React.useMemo(() => {
-    if (!searchValue) {
-      // Si no hay búsqueda, mostramos los 10 primeros destinos ordenados alfabéticamente
-      return allDestinationsForSearch
-        .sort((a, b) => a.name.localeCompare(b.name))
-        .slice(0, 10);
-    }
+    if (!searchValue) return allDestinationsForSearch;
     
     const lowerCaseSearch = searchValue.toLowerCase();
     return allDestinationsForSearch.filter(dest => 
@@ -61,7 +59,7 @@ export function PlanFinder() {
                 "flex items-center w-full h-14 text-base border rounded-xl shadow-sm bg-white px-3 cursor-pointer",
                 open ? "border-primary ring-2 ring-primary/50" : "border-gray-300"
               )}
-              onClick={() => setOpen(prev => !prev)} // Toggle open state on click
+              onClick={() => setOpen(true)}
             >
               <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
               <CommandInput
@@ -78,7 +76,7 @@ export function PlanFinder() {
                   {filteredDestinations.length === 0 && (
                     <CommandEmpty>No se encontraron resultados.</CommandEmpty>
                   )}
-                  <CommandGroup heading={searchValue ? "Resultados de búsqueda" : "Destinos populares"}>
+                  <CommandGroup heading="Destinos">
                     {filteredDestinations.map((dest) => (
                       <CommandItem
                         key={dest.value}
@@ -101,19 +99,19 @@ export function PlanFinder() {
           </Command>
         </div>
 
-        {/* Search Button */}
+        {/* Search Button (Placeholder for now) */}
         <Button 
           className="h-14 px-6 text-lg font-semibold"
           onClick={() => {
-            // Lógica para buscar o navegar
-            const destinationToSearch = selectedDestination || searchValue;
-            const match = allDestinationsForSearch.find(d => d.name === destinationToSearch || d.value === destinationToSearch.toLowerCase().replace(/ /g, '-'));
-            
-            if (match) {
-              navigate(`/plans?destination=${match.value}`);
-            } else if (filteredDestinations.length > 0) {
-              // Si no hay match exacto, usamos el primer resultado filtrado
-              navigate(`/plans?destination=${filteredDestinations[0].value}`);
+            if (selectedDestination) {
+              // Si ya hay un destino seleccionado, navegamos.
+              navigate(`/plans?destination=${allDestinationsForSearch.find(d => d.name === selectedDestination)?.value}`);
+            } else if (searchValue) {
+              // Si solo hay texto, intentamos buscar el primero de la lista filtrada
+              const firstMatch = filteredDestinations[0];
+              if (firstMatch) {
+                handleSelect(firstMatch.value, firstMatch.name);
+              }
             }
           }}
         >
