@@ -14,10 +14,29 @@ const DestinationsPage = () => {
     return name.toLowerCase().includes(search.toLowerCase());
   };
 
+  const allDestinations = useMemo(() => {
+    const combined = [
+      ...popularDestinations,
+      ...regionalDestinations.map(r => ({ ...r, flag: '🇪🇺' })), // Add a default flag for regions
+      ...allCountries,
+      ...cities.map(c => ({ name: c.label, value: c.value, flag: c.flag })),
+    ];
+
+    const uniqueDestinations = Array.from(
+      new Map(combined.map(item => [item.value, item])).values()
+    );
+    
+    return uniqueDestinations.sort((a, b) => a.name.localeCompare(b.name));
+  }, []);
+
   const filteredPopular = useMemo(() => popularDestinations.filter(filterByName), [search]);
   const filteredRegions = useMemo(() => regionalDestinations.filter(filterByName), [search]);
   const filteredCountries = useMemo(() => allCountries.filter(filterByName), [search]);
   const filteredCities = useMemo(() => cities.filter(filterByName), [search]);
+  const filteredAll = useMemo(() => {
+    if (!search) return allDestinations;
+    return allDestinations.filter(dest => dest.name.toLowerCase().includes(search.toLowerCase()));
+  }, [search, allDestinations]);
 
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -62,7 +81,7 @@ const DestinationsPage = () => {
           </TabsContent>
 
           <TabsContent value="countries" className="pt-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredCountries.map((dest) => (
                 <DestinationItem key={dest.value} {...dest} variant="list" />
               ))}
@@ -78,8 +97,8 @@ const DestinationsPage = () => {
           </TabsContent>
 
           <TabsContent value="all" className="pt-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-              {allCountries.map((dest) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredAll.map((dest) => (
                 <DestinationItem key={dest.value} {...dest} variant="list" />
               ))}
             </div>
