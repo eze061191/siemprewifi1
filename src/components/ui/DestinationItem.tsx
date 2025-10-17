@@ -1,5 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { ChevronRight, Globe } from "lucide-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { cn } from '@/lib/utils';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface DestinationItemProps {
   name: string;
@@ -8,47 +12,36 @@ interface DestinationItemProps {
   variant?: 'card' | 'list';
 }
 
-export const DestinationItem = ({ name, value, flag, variant = 'card' }: DestinationItemProps) => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate(`/plans?destination=${value}&days=7`);
-  };
+export const DestinationItem: React.FC<DestinationItemProps> = ({
+  name,
+  value,
+  flag,
+  variant = 'card',
+}) => {
+  const linkPath = `/plans?destination=${value}`;
 
   if (variant === 'list') {
     return (
-      <button
-        onClick={handleClick}
-        className="w-full flex items-center justify-between p-4 border-b hover:bg-secondary transition-colors"
-      >
-        <div className="flex items-center gap-4">
-          <span className="text-2xl">{flag}</span>
-          <span className="font-medium">{name}</span>
-        </div>
-        <ChevronRight className="h-5 w-5 text-muted-foreground" />
-      </button>
+      <Link to={linkPath} className="w-full">
+        <Button variant="ghost" className="w-full justify-start h-auto py-2 px-3 text-base font-normal hover:bg-secondary">
+          {flag && <span className="mr-2 text-xl">{flag}</span>}
+          <span className="truncate">{name}</span>
+        </Button>
+      </Link>
     );
   }
 
   return (
-    <button
-      onClick={handleClick}
-      className="flex items-center justify-between p-4 border rounded-lg hover:shadow-md hover:border-primary transition-all text-left"
-    >
-      <div className="flex items-center gap-3">
-        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10">
-          {flag ? (
-            <span className="text-2xl">{flag}</span>
-          ) : (
-            <Globe className="h-5 w-5 text-primary" />
-          )}
-        </div>
-        <div>
-          <p className="text-xs text-muted-foreground">eSIM</p>
-          <p className="font-bold">{name}</p>
-        </div>
-      </div>
-      <ChevronRight className="h-6 w-6 text-muted-foreground" />
-    </button>
+    <Link to={linkPath} className="block h-full">
+      <Card className="h-full transition-all duration-200 hover:shadow-lg hover:border-primary/50">
+        <CardContent className="p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {flag && <span className="text-3xl">{flag}</span>}
+            <span className="font-semibold text-lg capitalize">{name}</span>
+          </div>
+          <ArrowRight className="h-5 w-5 text-primary" />
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
