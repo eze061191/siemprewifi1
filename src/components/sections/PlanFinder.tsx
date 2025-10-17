@@ -23,6 +23,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cities, City } from "@/data/cities";
+import { GetStartedButton } from "@/components/ui/get-started-button";
 
 const PRICE_PER_DAY = 4.36;
 
@@ -170,7 +171,7 @@ export const PlanFinder = () => {
                             <p className="text-sm text-muted-foreground">${PRICE_PER_DAY.toFixed(2)}/día</p>
                           </div>
                       </div>
-                      <Button onClick={handleDateApply} className="bg-primary hover:bg-primary/90 self-end">Aplicar</Button>
+                      <GetStartedButton onClick={handleDateApply} className="self-end">Aplicar</GetStartedButton>
                   </div>
               </div>
             )}
