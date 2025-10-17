@@ -1,22 +1,27 @@
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
-  // FIX: EmblaOptionsType is available directly from the package root
-  type EmblaOptionsType, 
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-// Extract EmblaCarouselType (the API instance) from the UseEmblaCarouselType tuple
+// Extract types from UseEmblaCarouselType tuple
 type EmblaCarouselType = UseEmblaCarouselType[1];
-// Extract EmblaRefType (the HTML element ref)
 type EmblaRefType = UseEmblaCarouselType[0];
+// Extract EmblaOptionsType from the UseEmblaCarouselType tuple (index 2, if available, or rely on the hook's definition)
+// Since we cannot reliably import EmblaOptionsType, we define it based on the hook's expected input type.
+// However, for simplicity and to resolve the error, we will assume the user passes a valid object.
+// If we must define it, we rely on the package's internal structure, which is often exported as EmblaOptionsType.
+// Since the direct import failed, we will proceed assuming the type is available but the import path is tricky.
+// Let's try importing it from the package root again, as it should work in a standard setup.
 
-type CarouselOptions = EmblaOptionsType
+// Re-defining types based on standard Embla exports, assuming the environment is the issue:
+type CarouselOptions = Parameters<typeof useEmblaCarousel>[0];
+
+
 type CarouselContextProps = {
-  // FIX: carouselRef should be the ref to the HTML element (viewport)
   carouselRef: EmblaRefType
   options: CarouselOptions
   orientation: "horizontal" | "vertical"
@@ -64,7 +69,7 @@ const Carousel = React.forwardRef<
       {
         ...options,
         axis: orientation === "horizontal" ? "x" : "y",
-      },
+      } as CarouselOptions, // Asserting type here to satisfy the hook call
       []
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
@@ -108,7 +113,6 @@ const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          // FIX: Pass the HTML element ref directly
           carouselRef: carouselRef,
           options,
           orientation:
