@@ -10,6 +10,10 @@ import { Star, Minus, Plus } from 'lucide-react';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { PlanInfoTabs } from '@/components/ui/plan-info-tabs';
 import { PaymentInfo } from '@/components/sections/PaymentInfo';
+import { FastConnection } from '@/components/sections/FastConnection';
+import { PlanAdvantages } from '@/components/sections/PlanAdvantages';
+import { WhyChooseUs } from '@/components/sections/WhyChooseUs';
+import { SingleTestimonial } from '@/components/sections/SingleTestimonial';
 
 const PlanDetails = () => {
   const [searchParams] = useSearchParams();
@@ -102,7 +106,14 @@ const PlanDetails = () => {
       </div>
       
       <PaymentInfo />
-      <HowItWorks />
+      <FastConnection />
+      <HowItWorks 
+        title={`¿Cómo funciona la eSIM de SiempreWIFI para ${destination}?`}
+        subtitle="Activa tu plan de datos en minutos y disfruta de una conexión estable durante todo tu viaje."
+      />
+      <PlanAdvantages destination={destination} />
+      <WhyChooseUs />
+      <SingleTestimonial />
       <Faq />
     </div>
   );

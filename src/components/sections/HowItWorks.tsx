@@ -23,16 +23,21 @@ const steps = [
   },
 ];
 
-export const HowItWorks = () => {
+interface HowItWorksProps {
+    title?: string;
+    subtitle?: string;
+}
+
+export const HowItWorks = ({ title, subtitle }: HowItWorksProps) => {
   return (
     <section className="bg-white py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">
-            Conectarte es así de fácil
+            {title || "Conectarte es así de fácil"}
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-            En solo 4 simples pasos estarás conectado en cualquier parte del mundo.
+            {subtitle || "En solo 4 simples pasos estarás conectado en cualquier parte del mundo."}
           </p>
         </div>
         <div className="mt-20">
