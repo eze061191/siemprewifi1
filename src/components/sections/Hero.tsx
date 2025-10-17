@@ -1,69 +1,57 @@
-import { Button } from "@/components/ui/button";
-import { Star, Check } from "lucide-react";
-import { PlanFinder } from "./PlanFinder";
+import React from 'react';
+import { PlanFinder } from '@/components/sections/PlanFinder';
+import { Globe, Zap, Shield } from 'lucide-react';
 
-export const Hero = () => {
+export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 tracking-tight">
-              Viaja conectado a más de{" "}
-              <span className="text-primary">160 países</span> sin cambiar de
-              SIM
-            </h1>
-            <p className="mt-4 max-w-2xl mx-auto lg:mx-0 text-lg md:text-xl text-gray-500">
-              Internet 4G LTE ilimitado desde el momento que aterrizas. Sin
-              sorpresas, sin roaming.
-            </p>
-            <div className="mt-6 flex items-center justify-center lg:justify-start gap-2">
-              <div className="flex text-primary">
-                <Star fill="currentColor" className="h-5 w-5" />
-                <Star fill="currentColor" className="h-5 w-5" />
-                <Star fill="currentColor" className="h-5 w-5" />
-                <Star fill="currentColor" className="h-5 w-5" />
-                <Star fill="currentColor" className="h-5 w-5" />
+    <section className="relative bg-gray-50 py-16 lg:py-24 overflow-hidden">
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between">
+        {/* Left Content (Text) */}
+        <div className="lg:w-1/2 mb-12 lg:mb-0">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+            Viaja conectado, <span className="text-primary">sin límites</span>.
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-lg">
+            Planes eSIM flexibles para más de 150 destinos. Activa en minutos y olvídate del roaming.
+          </p>
+          
+          <div className="space-y-4">
+            <div className="flex items-start">
+              <Globe className="h-6 w-6 text-primary mt-1 mr-3 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Cobertura Global</h3>
+                <p className="text-gray-500 text-sm">Conéctate en cualquier parte del mundo.</p>
               </div>
-              <p className="text-gray-600 font-medium">
-                4.8/5 - Más de 15,000 viajeros conectados
-              </p>
             </div>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground py-3 px-8 text-lg rounded-md">
-                Ver Planes y Precios
-              </Button>
-              <Button variant="outline" className="w-full sm:w-auto py-3 px-8 text-lg rounded-md border-gray-300">
-                Cómo Funciona
-              </Button>
+            <div className="flex items-start">
+              <Zap className="h-6 w-6 text-primary mt-1 mr-3 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Activación Instantánea</h3>
+                <p className="text-gray-500 text-sm">Instala y activa tu eSIM en menos de 5 minutos.</p>
+              </div>
             </div>
-            <div className="mt-8 flex items-center justify-center lg:justify-start gap-x-6 gap-y-2 flex-wrap">
-                <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-600">Activación Instantánea</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-600">Sin Contratos</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-500" />
-                    <span className="text-gray-600">Soporte 24/7</span>
-                </div>
+            <div className="flex items-start">
+              <Shield className="h-6 w-6 text-primary mt-1 mr-3 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-lg">Seguro y Confiable</h3>
+                <p className="text-gray-500 text-sm">Datos de alta velocidad sin sorpresas en la factura.</p>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Right Content (PlanFinder) */}
+        <div className="lg:w-5/12 w-full relative z-20"> {/* Añadimos relative z-20 aquí */}
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-200">
             <div className="mt-12">
               <PlanFinder />
             </div>
           </div>
-          <div>
-            <img 
-              src="/Post - Conectividad global al alcance de tu mano.png" 
-              alt="Conectividad global al alcance de tu mano" 
-              className="rounded-lg shadow-2xl object-cover w-full"
-            />
-          </div>
         </div>
       </div>
+      
+      {/* Decorative background element (optional, ensure it has a low z-index) */}
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-primary/5 hidden lg:block z-10"></div>
     </section>
   );
-};
+}
