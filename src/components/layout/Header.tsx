@@ -23,9 +23,6 @@ export const Header = () => {
             <Link to="/destinations" variant="ghost" className={navLinkClasses}>
               Destinos
             </Link>
-            <Link to="/style-guide" variant="ghost" className={navLinkClasses}>
-              Guía de Estilos
-            </Link>
             <Link to="/blog" variant="ghost" className={navLinkClasses}>
               Blog
             </Link>
