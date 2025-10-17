@@ -11,22 +11,51 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { popularDestinations, allCountries, regionalDestinations } from "@/data/destinations"
-import { cities } from "@/data/cities"
+import { allDestinations, Destination } from "@/data/all-destinations"
 import { DestinationItem } from "../ui/DestinationItem"
+
+// Definiciones manuales para la pestaña Popular (basadas en la imagen de referencia y la lista consolidada)
+const popularDestinationsManual: Destination[] = [
+    allDestinations.find(d => d.label === "España"),
+    allDestinations.find(d => d.label === "Estados Unidos"),
+    allDestinations.find(d => d.label === "Marruecos"),
+    allDestinations.find(d => d.label === "Japón"),
+    allDestinations.find(d => d.label === "China"),
+    allDestinations.find(d => d.label === "México"),
+    allDestinations.find(d => d.label === "Turquía"),
+    allDestinations.find(d => d.label === "Suiza"),
+    allDestinations.find(d => d.label === "Reino Unido"),
+].filter((d): d is Destination => d !== undefined && d !== null);
+
 
 export function DestinationMenu() {
   const [search, setSearch] = React.useState('');
 
-  const filterByName = (item: { name: string } | { label: string }) => {
-    const name = 'name' in item ? item.name : item.label;
-    return name.toLowerCase().includes(search.toLowerCase());
+  const filterByName = (item: Destination) => {
+    return item.label.toLowerCase().includes(search.toLowerCase());
   };
 
-  const filteredPopular = React.useMemo(() => popularDestinations.filter(filterByName), [search]);
-  const filteredRegional = React.useMemo(() => regionalDestinations.filter(filterByName), [search]);
-  const filteredCountries = React.useMemo(() => allCountries.filter(filterByName), [search]);
-  const filteredCities = React.useMemo(() => cities.filter(filterByName), [search]);
+  const filteredPopular = React.useMemo(() => popularDestinationsManual.filter(filterByName), [search]);
+  
+  const filteredRegional = React.useMemo(() => 
+    allDestinations.filter(d => d.type === 'Región').filter(filterByName), 
+    [search]
+  );
+  
+  const filteredCountries = React.useMemo(() => 
+    allDestinations.filter(d => d.type === 'País').filter(filterByName), 
+    [search]
+  );
+  
+  const filteredCities = React.useMemo(() => 
+    allDestinations.filter(d => d.type === 'Ciudad').filter(filterByName), 
+    [search]
+  );
+
+  const filteredAll = React.useMemo(() => 
+    allDestinations.filter(filterByName), 
+    [search]
+  );
 
   return (
     <NavigationMenu>
@@ -81,20 +110,14 @@ export function DestinationMenu() {
                 <TabsContent value="cities" className="pt-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-h-[300px] overflow-y-auto">
                     {filteredCities.map((city) => (
-                      <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} />
+                      <DestinationItem key={city.value} {...city} />
                     ))}
                   </div>
                 </TabsContent>
                 <TabsContent value="all" className="pt-4">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-2 max-h-[300px] overflow-y-auto">
-                    {filteredRegional.map((dest) => (
+                    {filteredAll.map((dest) => (
                       <DestinationItem key={dest.value} {...dest} variant="list" />
-                    ))}
-                    {filteredCountries.map((dest) => (
-                      <DestinationItem key={dest.value} {...dest} variant="list" />
-                    ))}
-                     {filteredCities.map((city) => (
-                      <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="list" />
                     ))}
                   </div>
                 </TabsContent>
