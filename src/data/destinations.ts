@@ -11,6 +11,12 @@ export const popularDestinations = [
   { name: "Europa", flag: "🇪🇺", value: "europe" },
   { name: "Andorra", flag: "🇦🇩", value: "andorra" },
   { name: "Egipto", flag: "🇪🇬", value: "egypt" },
+  { name: "Emiratos Árabes Unidos", flag: "🇦🇪", value: "uae" },
+  { name: "Asia", flag: "🌏", value: "asia-region" },
+  { name: "Tailandia", flag: "🇹🇭", value: "thailand" },
+  { name: "Indonesia", flag: "🇮🇩", value: "indonesia" },
+  { name: "Colombia", flag: "🇨🇴", value: "colombia" },
+  { name: "Argentina", flag: "🇦🇷", value: "argentina" },
 ];
 
 export const regionalDestinations = [
