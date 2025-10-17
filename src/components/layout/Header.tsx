@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { DestinationMenu } from "./DestinationMenu";
 
 export const Header = () => {
   return (
@@ -10,10 +11,8 @@ export const Header = () => {
               SiempreWIFI
             </span>
           </div>
-          <nav className="hidden md:flex md:space-x-8">
-            <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
-              Inicio
-            </a>
+          <nav className="hidden md:flex md:space-x-8 items-center">
+            <DestinationMenu />
             <a href="#" className="font-medium text-gray-500 hover:text-gray-900">
               Sobre Nosotros
             </a>
