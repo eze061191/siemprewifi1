@@ -5,6 +5,7 @@ import { format, differenceInDays } from "date-fns";
 import { es } from "date-fns/locale";
 import { Calendar as CalendarIcon, Check, Globe, Info } from "lucide-react";
 import { DateRange } from "react-day-picker";
+import { useNavigate } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -28,6 +29,7 @@ import { GetStartedButton } from "@/components/ui/get-started-button";
 const PRICE_PER_DAY = 4.36;
 
 export const PlanFinder = () => {
+  const navigate = useNavigate();
   const [dateOpen, setDateOpen] = React.useState(false);
   const [date, setDate] = React.useState<DateRange | undefined>();
   
@@ -79,12 +81,24 @@ export const PlanFinder = () => {
     }
   }
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!selectedCity) {
+      // Opcional: mostrar un error si no se selecciona destino
+      alert("Por favor, selecciona un destino.");
+      return;
+    }
+    const destination = selectedCity.value;
+    const duration = days > 0 ? days : 7; // Valor por defecto si no se eligen días
+    navigate(`/plans?destination=${destination}&days=${duration}`);
+  };
+
   return (
     <div className="w-full max-w-md">
       <h3 className="text-xl font-semibold mb-4 text-center lg:text-left">
         Encuentra tu plan ideal
       </h3>
-      <div className="space-y-3">
+      <form onSubmit={handleSubmit} className="space-y-3">
         {/* Destination Search */}
         <Command ref={commandRef} className="relative overflow-visible">
           <div className="flex items-center w-full h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white px-3">
@@ -181,7 +195,7 @@ export const PlanFinder = () => {
         <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-7 text-lg font-bold rounded-xl">
           Ver planes disponibles
         </Button>
-      </div>
+      </form>
     </div>
   );
 };
