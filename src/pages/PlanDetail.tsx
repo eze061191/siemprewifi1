@@ -6,7 +6,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { SingleTestimonial } from "@/components/sections/SingleTestimonial";
 import { Faq } from "@/components/sections/Faq";
 import { PaymentInfo } from "@/components/sections/PaymentInfo";
-import { DestinationCta } from "@/components/sections/DestinationCta"; // Importar componente original
+import { DestinationHeaderCta } from "@/components/sections/DestinationHeaderCta"; // Importar componente renombrado
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
@@ -46,7 +46,7 @@ const PlanDetail = () => {
 
             <SingleTestimonial />
             
-            <DestinationCta /> {/* Usar componente original */}
+            <DestinationHeaderCta /> {/* Usar componente renombrado */}
 
             <Faq />
 
