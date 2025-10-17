@@ -41,10 +41,13 @@ export function PlanFinder() {
 
   const handleValueChange = (value: string) => {
     setSearchValue(value);
+    // Abrir el menú si hay texto, o si se hace clic y no hay texto
     if (value.length > 0) {
       setOpen(true);
-    } else {
-      setOpen(false);
+    } else if (value.length === 0 && open) {
+      // Si el usuario borra todo, mantenemos abierto si ya estaba abierto, 
+      // pero si el clic inicial fue en el contenedor, se abre.
+      // Para simplificar, lo abrimos si hay valor.
     }
   };
 
@@ -54,6 +57,7 @@ export function PlanFinder() {
         {/* Input de Búsqueda (CommandInput) */}
         <div className="flex-grow relative w-full">
           <Command ref={commandRef} className="relative overflow-visible">
+            {/* Contenedor visual del input */}
             <div
               className="flex items-center w-full h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white px-3 cursor-text"
               onClick={() => setOpen(true)}
@@ -61,9 +65,10 @@ export function PlanFinder() {
               <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
               <CommandInput
                 value={searchValue}
-                onValueChange={handleValueChange} // Usamos onValueChange para manejar el cambio de valor
+                onValueChange={handleValueChange}
                 placeholder="¿A dónde viajas?"
-                className="h-full border-none focus:ring-0 focus:outline-none p-0 text-gray-700"
+                // Clases para asegurar que CommandInput ocupe el espacio restante y no tenga bordes duplicados
+                className="h-full border-none focus:ring-0 focus:outline-none p-0 text-gray-700 flex-grow"
               />
             </div>
 
