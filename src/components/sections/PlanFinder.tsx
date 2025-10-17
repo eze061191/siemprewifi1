@@ -26,6 +26,7 @@ import {
 import { Destination, allDestinations, DestinationType } from "@/data/all-destinations";
 import { GetStartedButton } from "@/components/ui/get-started-button";
 import { Badge } from "@/components/ui/badge";
+import { Label } from "@/components/ui/label"; // Importar Label
 
 const PRICE_PER_DAY = 4.36;
 
@@ -89,9 +90,9 @@ export const PlanFinder = () => {
       alert("Por favor, selecciona un destino.");
       return;
     }
-    const destination = selectedDestination.value;
-    const duration = days > 0 ? days : 7; // Valor por defecto si no se eligen días
-    navigate(`/plans?destination=${destination}&days=${duration}`);
+    const destinationValue = selectedDestination.value;
+    // Redirigir a la nueva página de detalle del plan
+    navigate(`/plans/${destinationValue}`);
   };
 
   const getIconForType = (type: DestinationType) => {
