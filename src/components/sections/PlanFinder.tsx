@@ -1,7 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Search, MapPin, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+"use client";
+
+import * as React from "react";
+import { format, differenceInDays } from "date-fns";
+import { es } from "date-fns/locale";
+import { Calendar as CalendarIcon, Check, Globe, Info } from "lucide-react";
+import { DateRange } from "react-day-picker";
+import { useNavigate } from "react-router-dom";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Command,
   CommandEmpty,
@@ -9,97 +22,180 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
-import { allDestinations } from '@/data/allDestinations';
-import { FlagImage } from '@/components/ui/FlagImage';
+} from "@/components/ui/command";
+import { cities, City } from "@/data/cities";
+import { GetStartedButton } from "@/components/ui/get-started-button";
 
-export function PlanFinder() {
-  const [destinationOpen, setDestinationOpen] = useState(false);
-  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
-  const commandRef = useRef<HTMLDivElement>(null);
+const PRICE_PER_DAY = 4.36;
 
-  // Manejar clic fuera del CommandList
-  useEffect(() => {
-    const handler = (event: MouseEvent) => {
+export const PlanFinder = () => {
+  const navigate = useNavigate();
+  const [dateOpen, setDateOpen] = React.useState(false);
+  const [date, setDate] = React.useState<DateRange | undefined>();
+  
+  const [days, setDays] = React.useState(0);
+  const [totalPrice, setTotalPrice] = React.useState(0);
+
+  const [destinationOpen, setDestinationOpen] = React.useState(false);
+  const [selectedCity, setSelectedCity] = React.useState<City | null>(null);
+  const [searchValue, setSearchValue] = React.useState("");
+  const commandRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (date?.from && date?.to) {
+      const calculatedDays = differenceInDays(date.to, date.from) + 1;
+      setDays(calculatedDays > 0 ? calculatedDays : 0);
+      setTotalPrice(calculatedDays > 0 ? calculatedDays * PRICE_PER_DAY : 0);
+    } else {
+      setDays(0);
+      setTotalPrice(0);
+    }
+  }, [date]);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (commandRef.current && !commandRef.current.contains(event.target as Node)) {
         setDestinationOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [commandRef]);
 
-  const handleSelectDestination = (destinationName: string) => {
-    setSelectedDestination(destinationName);
+  const handleDateApply = () => {
+    setDateOpen(false);
+  };
+
+  const handleSelectCity = (city: City) => {
+    setSelectedCity(city);
+    setSearchValue(city.label);
     setDestinationOpen(false);
   };
 
-  const currentFlag = allDestinations.find(d => d.name === selectedDestination)?.flag;
-  const isRegional = currentFlag && currentFlag.length > 2;
+  const handleSearchChange = (search: string) => {
+    setSearchValue(search);
+    if (selectedCity && search !== selectedCity.label) {
+      setSelectedCity(null);
+    }
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!selectedCity) {
+      // Opcional: mostrar un error si no se selecciona destino
+      alert("Por favor, selecciona un destino.");
+      return;
+    }
+    const destination = selectedCity.value;
+    const duration = days > 0 ? days : 7; // Valor por defecto si no se eligen días
+    navigate(`/plans?destination=${destination}&days=${duration}`);
+  };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Encuentra tu plan ideal</h2>
-      <div className="flex flex-col md:flex-row gap-4">
-        
-        {/* Campo de Destino */}
-        <div className="relative flex-grow" ref={commandRef}>
-          <div
-            className="flex items-center border border-gray-300 rounded-lg p-3 cursor-pointer bg-white hover:border-primary transition-colors"
-            onClick={() => setDestinationOpen(!destinationOpen)}
-          >
-            <MapPin className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-            <div className="flex-grow">
-              <p className="text-xs text-gray-500 font-medium">Destino</p>
-              <p className="text-base font-semibold text-gray-800 truncate">
-                {selectedDestination || 'Selecciona un destino'}
-              </p>
-            </div>
-            <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${destinationOpen ? 'rotate-180' : ''}`} />
+    <div className="w-full max-w-md">
+      <h3 className="text-xl font-semibold mb-4 text-center lg:text-left">
+        Encuentra tu plan ideal
+      </h3>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        {/* Destination Search */}
+        <Command ref={commandRef} className="relative overflow-visible">
+          <div className="flex items-center w-full h-14 text-base border border-gray-300 rounded-xl shadow-sm bg-white px-3">
+            <Globe className="mr-3 h-5 w-5 shrink-0 opacity-50" />
+            <CommandInput
+              value={searchValue}
+              onValueChange={handleSearchChange}
+              onFocus={() => setDestinationOpen(true)}
+              placeholder="A dónde viajas?"
+              className="w-full h-full border-none focus:ring-0 p-0 text-base"
+            />
           </div>
-
           {destinationOpen && (
-            <Command className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-xl z-20 max-h-60 overflow-hidden">
-              <CommandInput placeholder="Buscar país, región o ciudad..." />
-              <CommandList>
-                <CommandEmpty>No se encontró el destino.</CommandEmpty>
-                <CommandGroup>
-                  {allDestinations.map((dest) => (
-                    <CommandItem
-                      key={dest.value}
-                      onSelect={() => handleSelectDestination(dest.name)}
-                      className="flex items-center cursor-pointer"
-                    >
-                      <FlagImage 
-                        flagUrl={dest.flag} 
-                        isRegional={!dest.flag || dest.flag.length > 2} 
-                        className="h-6 w-6 mr-3 flex-shrink-0 text-base" 
-                      />
-                      {dest.name}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </CommandList>
-            </Command>
+            <CommandList className="absolute top-full mt-1 w-full bg-white border rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+              <CommandEmpty>No se encontró la ciudad.</CommandEmpty>
+              <CommandGroup>
+                {cities.map((city) => (
+                  <CommandItem
+                    key={city.value}
+                    value={city.label}
+                    onSelect={() => handleSelectCity(city)}
+                  >
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        selectedCity?.value === city.value
+                          ? "opacity-100"
+                          : "opacity-0"
+                      )}
+                    />
+                    {city.flag} {city.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
           )}
-        </div>
+        </Command>
 
-        {/* Campo de Fechas (Placeholder) */}
-        <div className="flex-grow">
-          <div className="flex items-center border border-gray-300 rounded-lg p-3 bg-gray-50">
-            <Search className="h-5 w-5 text-gray-400 mr-3" />
-            <div className="flex-grow">
-              <p className="text-xs text-gray-500 font-medium">Fechas</p>
-              <p className="text-base font-semibold text-gray-500">Selecciona fechas</p>
+        {/* Date Range Picker */}
+        <Popover open={dateOpen} onOpenChange={setDateOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              id="date"
+              variant={"outline"}
+              className={cn(
+                "w-full justify-start text-left font-normal h-14 text-base text-muted-foreground hover:bg-white border-gray-300 rounded-xl shadow-sm",
+                !date && "text-muted-foreground"
+              )}
+            >
+              <CalendarIcon className="mr-3 h-5 w-5 opacity-50" />
+              {days > 0 ? (
+                  <span className="text-foreground">{days} {days === 1 ? 'día' : 'días'}</span>
+              ) : (
+                  "¿Por cuántos días?"
+              )}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-4" align="start">
+            <h3 className="text-lg font-semibold text-center mb-2">Elige la fecha de tu plan</h3>
+            <div className="p-3 text-sm rounded-md bg-primary/10 flex items-center gap-2 mb-4">
+              <Info className="h-5 w-5 text-primary flex-shrink-0" />
+              <span className="text-gray-700">Tu plan comenzará una vez que llegues a tu destino y actives tu eSIM.</span>
             </div>
-          </div>
-        </div>
+            <Calendar
+              initialFocus
+              mode="range"
+              defaultMonth={date?.from}
+              selected={date}
+              onSelect={setDate}
+              numberOfMonths={2}
+              locale={es}
+              disabled={{ before: new Date() }}
+            />
+            {days > 0 && date?.from && date?.to && (
+              <div className="p-4 mt-2 bg-primary/10 rounded-lg">
+                  <div className="flex justify-between items-center">
+                      <div>
+                          <p className="font-bold">Plan de {days} días</p>
+                          <p className="text-sm text-muted-foreground">
+                              {format(date.from, "d MMM", { locale: es })} - {format(date.to, "d MMM", { locale: es })}
+                          </p>
+                          <div className="flex items-baseline gap-2 mt-1">
+                            <p className="font-bold">Total: ${totalPrice.toFixed(2)} USD</p>
+                            <p className="text-sm text-muted-foreground">${PRICE_PER_DAY.toFixed(2)}/día</p>
+                          </div>
+                      </div>
+                      <GetStartedButton onClick={handleDateApply} className="self-end">Aplicar</GetStartedButton>
+                  </div>
+              </div>
+            )}
+          </PopoverContent>
+        </Popover>
 
-        {/* Botón de Búsqueda */}
-        <Button className="md:w-auto px-8 py-6 text-lg font-semibold">
-          Buscar
+        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-7 text-lg font-bold rounded-xl">
+          Ver planes disponibles
         </Button>
-      </div>
+      </form>
     </div>
   );
-}
+};
