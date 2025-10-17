@@ -2,22 +2,37 @@ import React from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { popularDestinations, allCountries, regionalDestinations } from "@/data/destinations"
-import { cities } from "@/data/cities"
+import { popularDestinations, allCountries, regionalDestinations, cityDestinations } from "@/data/destinations"
 import { DestinationItem } from "@/components/ui/DestinationItem"
+
+// Definición de tipo para los elementos de destino
+interface Destination {
+  name: string;
+  value: string;
+  flag?: string;
+  isRegional?: boolean;
+}
 
 export function Destinations() {
   const [search, setSearch] = React.useState('');
 
-  const filterByName = (item: { name: string } | { label: string }) => {
-    const name = 'name' in item ? item.name : item.label;
-    return name.toLowerCase().includes(search.toLowerCase());
+  const filterByName = (item: Destination) => {
+    return item.name.toLowerCase().includes(search.toLowerCase());
   };
 
   const filteredPopular = React.useMemo(() => popularDestinations.filter(filterByName), [search]);
   const filteredRegional = React.useMemo(() => regionalDestinations.filter(filterByName), [search]);
   const filteredCountries = React.useMemo(() => allCountries.filter(filterByName), [search]);
-  const filteredCities = React.useMemo(() => cities.filter(filterByName), [search]);
+  const filteredCities = React.useMemo(() => cityDestinations.filter(filterByName), [search]);
+
+  // Lista combinada para la pestaña 'Todos los destinos'
+  const allCombinedDestinations = React.useMemo(() => {
+    const combined = [...regionalDestinations, ...allCountries, ...cityDestinations];
+    // Usamos un Set para asegurar unicidad por 'value'
+    const uniqueDestinations = Array.from(new Map(combined.map(item => [item.value, item])).values());
+    return uniqueDestinations.sort((a, b) => a.name.localeCompare(b.name)).filter(filterByName);
+  }, [search]);
+
 
   return (
     <div className="container mx-auto p-4">
@@ -66,23 +81,14 @@ export function Destinations() {
         <TabsContent value="cities" className="pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCities.map((city) => (
-              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="card" />
+              <DestinationItem key={city.value} {...city} variant="card" />
             ))}
           </div>
         </TabsContent>
         <TabsContent value="all" className="pt-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {/* Regional destinations */}
-            {filteredRegional.map((dest) => (
+            {allCombinedDestinations.map((dest) => (
               <DestinationItem key={dest.value} {...dest} variant="card" />
-            ))}
-            {/* Countries */}
-            {filteredCountries.map((dest) => (
-              <DestinationItem key={dest.value} {...dest} variant="card" />
-            ))}
-            {/* Cities */}
-            {filteredCities.map((city) => (
-              <DestinationItem key={city.value} name={city.label} value={city.value} flag={city.flag} variant="card" />
             ))}
           </div>
         </TabsContent>
