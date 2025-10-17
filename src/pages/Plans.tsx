@@ -9,6 +9,7 @@ import { Faq } from "@/components/sections/Faq";
 import { QuantityInput } from "@/components/ui/quantity-input";
 import { Star, InfinityIcon, Wifi, ShieldCheck, CheckCircle, MessageSquare, Clock, Globe, Minus, Plus } from 'lucide-react';
 import { HowItWorks } from '@/components/sections/HowItWorks';
+import { LiquidRadioGroup } from '@/components/ui/liquid-radio';
 
 const PlanDetails = () => {
   const [searchParams] = useSearchParams();
@@ -17,6 +18,7 @@ const PlanDetails = () => {
 
   const [numDays, setNumDays] = React.useState(parseInt(days, 10));
   const [numESims, setNumESims] = React.useState(1);
+  const [infoTab, setInfoTab] = React.useState('coverage');
 
   const pricePerDay = 5.99;
   const total = numDays * numESims * pricePerDay;
@@ -60,9 +62,22 @@ const PlanDetails = () => {
                     <div className="flex items-center gap-3"><Wifi className="h-5 w-5 text-primary" /><span>Internet rápido y confiable</span></div>
                     <div className="flex items-center gap-3"><ShieldCheck className="h-5 w-5 text-primary" /><span>Sin más cargos por roaming</span></div>
                   </div>
-                  <div className="mt-auto pt-6 flex gap-4">
-                    <Button variant="outline" className="w-full">Cobertura</Button>
-                    <Button variant="outline" className="w-full">Verificar compatibilidad</Button>
+                  <div className="mt-auto pt-6">
+                    <LiquidRadioGroup
+                      value={infoTab}
+                      onValueChange={setInfoTab}
+                      options={[
+                        { value: 'coverage', label: 'Cobertura' },
+                        { value: 'compatibility', label: 'Compatibilidad' },
+                      ]}
+                    />
+                    <div className="mt-4 text-sm text-muted-foreground min-h-[40px]">
+                      {infoTab === 'coverage' ? (
+                        <p>Aquí puedes ver un mapa de cobertura y detalles de la red para {destination}.</p>
+                      ) : (
+                        <p>Asegúrate de que tu teléfono sea compatible con la tecnología eSIM antes de comprar.</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
