@@ -158,7 +158,7 @@ export const PlanFinder = () => {
               disabled={{ before: new Date() }}
             />
             {days > 0 && date?.from && date?.to && (
-              <div className="p-4 border-t mt-2">
+              <div className="p-4 mt-2 bg-primary/10 rounded-lg">
                   <div className="flex justify-between items-center">
                       <div>
                           <p className="font-bold">Plan de {days} días</p>
