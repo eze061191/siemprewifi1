@@ -32,10 +32,10 @@ export function PlanFinder() {
     };
   }, []);
 
-  const handleSelectDestination = (value: string) => {
+  const handleSelectDestination = (name: string) => {
     // Aquí se manejaría la navegación o la selección final
-    console.log('Destino seleccionado:', value);
-    setSearchValue(value); // O el nombre del destino
+    console.log('Destino seleccionado:', name);
+    setSearchValue(name);
     setOpen(false);
   };
 
@@ -45,9 +45,7 @@ export function PlanFinder() {
     if (value.length > 0) {
       setOpen(true);
     } else if (value.length === 0 && open) {
-      // Si el usuario borra todo, mantenemos abierto si ya estaba abierto, 
-      // pero si el clic inicial fue en el contenedor, se abre.
-      // Para simplificar, lo abrimos si hay valor.
+      // Si el usuario borra todo, mantenemos abierto si ya estaba abierto.
     }
   };
 
