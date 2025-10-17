@@ -40,9 +40,9 @@ const PlanDetails = () => {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div className="grid lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid lg:grid-cols-4 gap-8 mt-8">
           {/* Columna Izquierda */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <Card className="overflow-hidden">
               <div className="grid md:grid-cols-2">
                 <img src="/Post - Conectividad global al alcance de tu mano.png" alt="Mujer en la playa" className="object-cover w-full h-full" />
