@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../ui/button';
-import { DestinationMenu } from '../../navigation/DestinationMenu';
-import { MobileMenu } from '../../navigation/MobileMenu';
+import { DestinationMenu } from '../navigation/DestinationMenu';
+import { MobileMenu } from '../navigation/MobileMenu';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
