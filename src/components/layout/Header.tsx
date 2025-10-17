@@ -1,94 +1,41 @@
-"use client";
-
-import { useState } from "react";
-import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { NavLink, useNavigate } from "react-router-dom"; // Importar useNavigate
-
-const navItems = [
-  { name: "Destinos", href: "/destinations" },
-  { name: "Cómo funciona", href: "/how-it-works" },
-  { name: "Ayuda", href: "/help" },
-];
+import { DestinationMenu } from "./DestinationMenu";
+import { Link } from "@/components/ui/link"; // Import Link from ui/link
 
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate(); // Inicializar useNavigate
-
-  const handleNavigateToPlans = () => {
-    navigate('/destinations');
-    setIsOpen(false); // Cerrar el menú si está abierto (solo relevante para móvil)
-  };
+  const navLinkClasses = "font-medium text-gray-500 hover:text-gray-900 transition-all duration-200 hover:shadow-md hover:shadow-primary/50 rounded-md";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo/Brand */}
-        <NavLink to="/" className="flex items-center space-x-2 font-bold text-xl text-primary">
-          <Globe className="h-6 w-6" />
-          <span>SiempreWIFI</span>
-        </NavLink>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.href}
-              className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-primary ${
-                  isActive ? "text-primary" : "text-gray-600"
-                }`
-              }
-            >
-              {item.name}
-            </NavLink>
-          ))}
-        </nav>
-
-        {/* Desktop Action Button */}
-        <div className="hidden md:flex items-center">
-          <Button 
-            onClick={handleNavigateToPlans} // Usar la función de navegación
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6"
-          >
-            Ver Planes
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
+    <header className="bg-white shadow-sm sticky top-0 z-40">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center">
+            {/* Usamos variant="ghost" y size="default" para que el Link se comporte como un contenedor de texto sin fondo */}
+            <Link to="/" variant="ghost" size="default" className="p-0 h-auto hover:bg-transparent">
+              <span className="text-2xl font-bold text-gray-800">
+                SiempreWIFI
+              </span>
+            </Link>
+          </div>
+          <nav className="hidden md:flex md:space-x-2 items-center">
+            <DestinationMenu />
+            {/* Usaremos el enlace de Destinos en el menú de navegación principal */}
+            <Link to="/destinations" variant="ghost" className={navLinkClasses}>
+              Destinos
+            </Link>
+            <Link to="/blog" variant="ghost" className={navLinkClasses}>
+              Blog
+            </Link>
+            <Link to="/account" variant="ghost" className={navLinkClasses}>
+              Mi cuenta
+            </Link>
+          </nav>
+          <div className="flex items-center">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6">
+              Ver Planes
             </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <div className="flex flex-col space-y-4 pt-6">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `text-lg font-medium transition-colors hover:text-primary ${
-                      isActive ? "text-primary" : "text-gray-700"
-                    }`
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-              <Button 
-                onClick={handleNavigateToPlans} // Usar la función de navegación
-                className="mt-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-6 py-3 text-base"
-              >
-                Ver Planes
-              </Button>
-            </div>
-          </SheetContent>
-        </Sheet>
+          </div>
+        </div>
       </div>
     </header>
   );
