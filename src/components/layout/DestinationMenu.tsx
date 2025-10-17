@@ -76,7 +76,11 @@ export function DestinationMenu() {
                 </TabsContent>
               </Tabs>
               <div className="mt-6 text-center">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-8"
+                  onClick={() => navigate('/destinations')}
+                >
                   Explorar Destinos
                 </Button>
               </div>
