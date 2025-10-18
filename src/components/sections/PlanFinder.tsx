@@ -216,10 +216,6 @@ export const PlanFinder = () => {
             )}
           </PopoverContent>
         </Popover>
-
-        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-7 text-lg font-bold rounded-xl">
-          Ver planes disponibles
-        </Button>
       </form>
     </div>
   );
